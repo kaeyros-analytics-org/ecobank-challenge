@@ -166,7 +166,7 @@ recommendation_ui <- function(id){
   fluentPage(
     div(class="container-fluid",
         div(class="row p-0 m-0", style = "gap: 10px;",
-            Text("Choisir l'identifiant d'un client: ", style = "color: #0C71A2;"),
+            Text("Choisir l'identifiant d'un client: ", style = "color: #23557f;"),
             div(style = "gap: 10px;",
                 Dropdown.shinyInput(ns("call_number"), style = "width: 220px;",
                                     value = opt1$key[1],
@@ -253,7 +253,7 @@ recommendation_server <- function(input, output, session) {
       #Top 5 des produits recommendés
       top_5 <- head(recommendations_products, 5)
       
-      fig <- plot_ly(top_5, x = ~top_5$Product , y = ~top_5$Score, type = 'bar', color = I("#0C71A2"))
+      fig <- plot_ly(top_5, x = ~top_5$Product , y = ~top_5$Score, type = 'bar', color = I("#23557f"))
       fig <- fig %>% layout(title = "Top 5 des produits recommendés",
                             xaxis = list(title = ""),
                             yaxis = list(title = ""))

@@ -24,7 +24,7 @@ classification_ui <- function(id){
       h3("Analytics Overview"),
       div( class = "cards_overview_list", id = "cardview",
            catalog_overview_card("Total clients", "Value", "35k"),
-           catalog_overview_card("Total discutions", "Value", "12k"),
+           catalog_overview_card("Total Reclamations", "Value", "12k"),
            catalog_overview_card("Total contacts", "Value", "58k")
       )
     ),

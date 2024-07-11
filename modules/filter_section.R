@@ -124,7 +124,7 @@ filterStatesRouter_server <- function(input, output, session, filterStates) {
         DefaultButton.shinyInput("filter_data", class = "btn-filter",
                                  text = "Apply filter",
                                  iconProps = list(iconName = "Add"),
-                                 style = "background-color: #0093FF; color: #fff;"
+                                 style = "background-color: #23557f; color: #fff;"
         )
       })
       

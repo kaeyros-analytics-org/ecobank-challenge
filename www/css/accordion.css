@@ -4,7 +4,7 @@
     padding: 5px;
     font-weight: bold;
     border: none;
-    color:#3392c5;
+    color:#23557f;
   }
   
   .card-body {
@@ -29,7 +29,7 @@
   .card-header a {
     text-decoration: none;
     font-weight: bold;
-    color:#3392c5 !important;
+    color:#23557f !important;
   }
   
   .card-header a:hover {
