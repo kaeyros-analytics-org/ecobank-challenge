@@ -38,9 +38,6 @@ filterStatesRouter_server <- function(input, output, session, filterStates) {
       output$filter_button <- renderUI({
         ""
       })
-      output$generate <- renderUI({
-        ""
-      })
       
       output$reset_filter <- renderUI({
         ""
