@@ -23,8 +23,8 @@ classification_ui <- function(id){
     div( class="container-fluid",
       h3("Analytics Overview"),
       div( class = "cards_overview_list",
-           catalog_overview_card("Nombre total de discution", "Value", "35k"),
-           catalog_overview_card("Nombre d'agent", "Value", "12k"),
+           catalog_overview_card("Nombre total de clients", "Value", "35k"),
+           catalog_overview_card("Nombre total de discution", "Value", "12k"),
            catalog_overview_card("Nombre de contact", "Value", "58k")
       )
     ),

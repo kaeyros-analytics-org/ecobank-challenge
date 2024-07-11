@@ -173,8 +173,15 @@ recommendation_ui <- function(id){
                                     options = options),
             )
         ),
-        h4("Historique de discussion pour cet identifiant:"),
-        textOutput(ns("history")),
+        div(class="row p-0 m-0",
+            div(class="col-lg-6 pr-1 pl-0",
+                h4("Historique de discussion pour cet identifiant:"),
+                textOutput(ns("history")),
+            ),
+            div(class="col-lg-6 pr-1 pl-0",
+                h3("Display Services")
+            )
+        ),
         div(class="row p-0 m-0",
             div(class="col-lg-6 pr-1 pl-0", style = "text-align: center;",
                 uiOutput(ns("bar1")),
