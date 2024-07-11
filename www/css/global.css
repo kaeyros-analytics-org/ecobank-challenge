@@ -1,0 +1,200 @@
+/* BundesSans font */
+@font-face {
+  font-family: "BundesSansWeb-Regular";
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+  src: url("../fonts/BundesSansWeb-Regular.eot"), url("../fonts/BundesSansWeb-Regular.ttf") format("truetype"), url("../fonts/BundesSansWeb-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "BundesSansWeb-Bold";
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+  src: url("../fonts/BundesSansWeb-Bold.eot"), url("../fonts/BundesSansWeb-Bold.ttf") format("truetype"), url("../fonts/BundesSansWeb-Bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "BundesSansWeb-Italic";
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+  src: url("../fonts/BundesSansWeb-Italic.eot"), url("../fonts/BundesSansWeb-Italic.ttf") format("truetype"), url("../fonts/BundesSansWeb-Italic.woff") format("woff");
+}
+
+@font-face {
+  font-family: "BundesSansWeb-BoldItalic";
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+  src: url("../fonts/BundesSansWeb-BoldItalic.eot"), url("../fonts/BundesSansWeb-BoldItalic.ttf") format("truetype"), url("../fonts/BundesSansWeb-BoldItalic.woff") format("woff");
+}
+
+@font-face {
+  font-family: "BundesSerifWeb-Bold";
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+  src: url("../fonts/BundesSerifWeb-Bold.eot"), url("../fonts/BundesSerifWeb-Bold.ttf") format("truetype"), url("../fonts/BundesSerifWeb-Bold.woff") format("woff");
+}
+
+#list {
+  vertical-align:top;
+  margin-top: -7px;
+}
+
+.filter-option {
+  color: #565b5f;
+  font-weight: bold;
+}
+
+body {
+    font-family: "BundesSansWeb-Regular", Arial, Helvetica, sans-serif !important;
+    padding-bottom: 0px;
+    position: relative;
+    min-height: 100%;
+    overflow-x: hidden;
+}
+
+a {
+  transition: background 0.2s, color 0.2s;
+}
+
+a:hover,
+a:focus {
+  text-decoration: none;
+}
+
+a:link {
+  color: #565b5f;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+
+/* Body */
+#wrapper {
+  padding-left: 0;
+  transition: all 0.5s ease;
+  position: relative;
+}
+
+#content-wrapper {
+  width: 100%;
+  position: absolute;
+  padding: 0;
+  top: 100px;
+}
+
+#wrapper.toggled #content-wrapper {
+  position: absolute;
+  margin-right: -250px;
+}
+
+.container-fluid {
+  padding: 0;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+}
+
+.center-30 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 30px;
+  font-size: 0.8em;
+  line-height: 1;
+}
+
+.center-vertical-left {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 50px;
+}
+
+
+#headerWrapper {
+  width: calc(100% - 50px); 
+  height: 50px; 
+  position: relative; 
+  float: left;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+label {
+  margin: 0;
+}
+
+.control-label {
+  font-weight: normal;
+  margin-bottom: 15px;
+  color:#3392c5;
+  margin-left: 20px;
+}
+
+.checkbox {
+  margin-left: 20px;
+}
+
+.shiny-options-group {
+  margin-left: 20px;
+}
+
+#filter u {
+  color:#3392c5;
+}
+
+#filter a {
+  color:#3392c5;
+}
+
+/* marker cluster */
+.marker-cluster div {
+  font-weight: bold !important;
+  font-size: 0.8em !important;
+  text-align: center !important;
+}
+
+/* error Handler */
+.errorHandler {
+  position: relative; 
+  top: -10px; 
+  left: 0; 
+  color: red; 
+  font-size: 0.8em; 
+  line-height: 1; 
+  font-weight: bold;
+}
+
+
+a > i {
+  color: black;
+}
+
+.noPadding {
+  padding: 0 !important;
+}
+
+.btn-filter{
+  background-color: rgb(232,245,251);
+  color:  #3392c5;
+  font-weight: bold;
+  margin-left: 15%;
+  margin-right: 15%
+}
+
+.modal-dialog{
+  max-height: 90%;
+  overflow: scroll;
+  overflow-x: auto;
+  overflow-y: auto;
+  pointer-events: all;
+}

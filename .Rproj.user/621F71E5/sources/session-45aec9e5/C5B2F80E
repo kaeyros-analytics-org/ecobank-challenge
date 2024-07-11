@@ -1,0 +1,26 @@
+{
+    "id": "C5B2F80E",
+    "path": "C:/R project/Ecobank_project_challenge/modules/classification.R",
+    "project_path": "modules/classification.R",
+    "type": "r_source",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1720685598887.0,
+    "source_on_save": false,
+    "relative_order": 6,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "35,27",
+        "scrollLine": "25"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1720691025,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1720691025241,
+    "read_only": false,
+    "read_only_alternatives": []
+}

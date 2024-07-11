@@ -1,0 +1,69 @@
+.table-bordered, .table-striped, .thead-light, .table-responsive-xl {
+  font-size: 13px;
+}
+
+#introtable {
+  font-size: 9 i !important;
+  text-align: justify;
+}
+
+#introtable table {
+  border-radius: 5px;
+}
+
+#introtable th {
+  border: 1px solid black;
+  padding: 15px;
+  background-color: #f8f8ff;
+}
+
+#introtable td {
+  border: 1px solid black;
+  padding: 15px;
+  vertical-align: top;
+}
+
+/* tooltip */
+.tooltip-inner {
+  background-color: white;
+  color: black;
+  max-width: 250px;
+  border: 1px solid #dedede;
+  z-index: 10000;
+}
+
+.tooltipIcon-m0 {
+  display: inline-block;
+}
+
+.tooltipIcon-m0:hover {
+  color: grey;
+  cursor: pointer;
+}
+
+.tooltipIcon {
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+.tooltipIcon:hover {
+  color: grey;
+  cursor: pointer;
+}
+
+.tooltip.bs-tooltip-right .arrow:before {
+    border-right-color: #dedede !important;
+    z-index: 10000;
+}
+.tooltip.bs-tooltip-left .arrow:before {
+    border-right-color: #dedede !important;
+    z-index: 10000;
+}
+.tooltip.bs-tooltip-bottom .arrow:before {
+    border-right-color: #dedede !important;
+    z-index: 10000;
+}
+.tooltip.bs-tooltip-top .arrow:before {
+    border-right-color: #dedede !important;
+    z-index: 10000;
+}

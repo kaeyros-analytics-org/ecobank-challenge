@@ -1,0 +1,116 @@
+.hidden_button {
+  visibility: hidden;
+}
+
+#logo-container {
+  height: 100px;
+  margin: 0;
+}
+
+.headRow {
+  width: 100%; 
+  height: 50px; 
+  position: relative;
+}
+
+.irs {
+  margin-left: 20px !important;
+  margin-right: 20px !important;
+}
+
+.irs-slider {
+  border: none !important;
+  background:#3392c5 !important;
+}
+
+.irs-line {
+  height: 2px !important;
+  top: 28px !important;
+}
+
+.irs-bar {
+  height: 2px !important;
+  top: 28px !important;
+}
+
+.irs-bar-edge {
+  height: 2px !important;
+  top: 28px !important;
+}
+
+.irs-max {
+  visibility: hidden !important;
+}
+
+.irs-min {
+  visibility: hidden !important;
+}
+
+.irs-single {
+  background:#3392c5 !important;
+}
+
+#sidebar-wrapper {
+    z-index: 50;
+    position: fixed;
+    left: 250px;
+    width: 0;
+    height: 100%;
+    margin-left: -250px;
+    background: #FFFFFF;
+    transition: all 0.5s ease;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 250px;
+}
+
+#aa-container {
+  display: inline-block; 
+  padding-top: 5px; 
+  padding-left: 5px;
+}
+
+#content-container {
+  position: relative; 
+  width: 100%;
+  padding: 5px;
+  padding-left: 10px;
+  background-color: #fff;
+}
+
+#sidebar-toggle {
+  float: left;
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
+
+#sidebar-toggle:hover {
+  background-color: #efefef;
+  cursor: pointer;
+}
+
+.sidebar-header {
+  display: inline;
+  margin-left: 20px;
+}
+
+.sidebar-trendlinie {
+  display: inline;
+  color:#3392c5;
+}
+
+.tooltipTrendlinie {
+  position: absolute;
+  right: 20px;
+}
+
+#sidebar-wrapper a {
+  color:#3392c5;
+}
+
+.bootstrap-select .dropdown-menu {
+  min-width: 100% !important;
+}

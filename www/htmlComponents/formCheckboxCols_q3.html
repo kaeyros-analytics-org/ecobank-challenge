@@ -1,0 +1,27 @@
+<div id="q3_additions" class="container-fluid m-0 p-0" style="padding: 0; display: none;">
+  <div id= {{ questionId }} class="row m-0 p-0">
+    <div class="col-sm-6 m-0 p-0">
+      {{ checkboxColFour }}
+    </div>
+    <div class="col-sm-6 m-0 p-0">
+      {{ checkboxColFive }}
+      {{ textboxOptionThree }}
+    </div>
+  </div>
+  {{ textboxOptionFour }}
+</div>
+
+<script>
+
+  $("label.container-checkbox_q3").click(function() {
+    var checkbox = $(this).find("input");
+
+    if ($(checkbox).prop("checked")) {
+      $(checkbox).prop("checked", false);
+    } else {
+      $(checkbox).prop("checked", true);
+    }
+  
+  });
+  
+</script>

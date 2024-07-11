@@ -1,0 +1,25 @@
+<ul id = {{ elementId }} class="vFormUl">
+  <li class="veryPoor">
+    <div class="inlineText">{{ valueOne }}</div>
+  </li>
+  <li class="poor">
+    <div class="inlineText">{{ valueTwo }}</div>
+  </li>
+  <li class="neutral vFormActive">
+    <div class="inlineText">{{ valueThree }}</div>
+  </li>
+  <li class="good">
+    <div class="inlineText">{{ valueFour }}</div>
+  </li>
+  <li class="veryGood">
+    <div class="inlineText">{{ valueFive }}</div>
+  </li>
+</ul>
+
+<script>
+  $('ul.vFormUl > li').click(function() {
+    let idUl = $(this).parent().attr('id');
+    $('#' + idUl + '>li.vFormActive').removeClass('vFormActive');
+    $(this).addClass("vFormActive");
+  });
+</script>
