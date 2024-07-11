@@ -22,13 +22,12 @@ classification_ui <- function(id){
     ################### Header CArd
     div( class="container-fluid",
       h3("Analytics Overview"),
-      div( class = "cards_overview_list",
-           catalog_overview_card("Nombre total de clients", "Value", "35k"),
-           catalog_overview_card("Nombre total de discution", "Value", "12k"),
-           catalog_overview_card("Nombre de contact", "Value", "58k")
+      div( class = "cards_overview_list", id = "cardview",
+           catalog_overview_card("Total clients", "Value", "35k"),
+           catalog_overview_card("Total discutions", "Value", "12k"),
+           catalog_overview_card("Total contacts", "Value", "58k")
       )
     ),
-    
     br(), ######### Make Space
     
     ################ Dashboard Layout 1

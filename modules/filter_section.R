@@ -125,23 +125,9 @@ filterStatesRouter_server <- function(input, output, session, filterStates) {
       
       output$filter_button <- renderUI({
         DefaultButton.shinyInput("filter_data", class = "btn-filter",
-                                 text = "Appliquer le filtre",
-                                 iconProps = list(iconName = "Refresh"),
+                                 text = "Apply filter",
+                                 iconProps = list(iconName = "Add"),
                                  style = "background-color: #0093FF; color: #fff;"
-        )
-      })
-      
-      output$generate <- renderUI({
-        #uiOutput("generate_report")
-        tagList(
-          div( style = "visibility: hidden;",
-               downloadButton("download_report", "Download as.docx)")
-          ),
-          DefaultButton.shinyInput("generate_report",
-                                   text = "Generate Report",
-                                   iconProps = list(iconName = "Download"),
-                                   style = "background-color: #0093FF; color: #fff; display: block; margin: auto; width: 70%;"
-          )
         )
       })
       

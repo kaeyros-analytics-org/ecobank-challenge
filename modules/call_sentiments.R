@@ -20,10 +20,10 @@ call_sentiments_ui <- function(id){
   fluentPage(
     div(class="container-fluid",
         div(class="row p-0 m-0", 
-            div(class="col-lg-6 pr-1 pl-0", style = "text-align: center;", tags$h4("Call Sentiment"), id = "",
+            div(class="col-lg-6 pr-1 pl-0", style = "text-align: center;", tags$h4("Call Sentiment"), id = "sentiment1",
                 echarts4rOutput(ns("call_sentiment1"))
             ),
-            div(class="col-lg-6 pl-1 pr-0", style = "text-align: center;", tags$h4("Call Sentiment"), id = "",
+            div(class="col-lg-6 pl-1 pr-0", style = "text-align: center;", tags$h4("Call Sentiment"), id = "sentiment2",
                 echarts4rOutput(ns("call_sentiment2"))
             )
         )

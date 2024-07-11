@@ -174,19 +174,19 @@ recommendation_ui <- function(id){
             )
         ),
         div(class="row p-0 m-0",
-            div(class="col-lg-6 pr-1 pl-0",
-                h4("Historique de discussion pour cet identifiant:"),
+            div(class="col-lg-6 pr-1 pl-0", id = "text_history",
+                h4("Discussion history for this ID::"),
                 textOutput(ns("history")),
             ),
-            div(class="col-lg-6 pr-1 pl-0",
+            div(class="col-lg-6 pr-1 pl-0", id = "services_recommendation",
                 h3("Display Services")
             )
         ),
         div(class="row p-0 m-0",
-            div(class="col-lg-6 pr-1 pl-0", style = "text-align: center;",
+            div(class="col-lg-6 pr-1 pl-0", id = "barchart",
                 uiOutput(ns("bar1")),
             ),
-            div(class="col-lg-6 pr-1 pl-0", style = "text-align: center;",
+            div(class="col-lg-6 pr-1 pl-0", id = "productstabs",
                 reactableOutput(ns("recommendations"))
             )
         )

@@ -23,12 +23,13 @@ headerWalkthrough_server <- function(input,
       
       print(dataset)
       
-      if (dataset == "Dashboard") tabset = "dashboard"
+      if (dataset == "Recommendation") tabset = "recommendation"
+      if (dataset == "Classification") tabset = "classification"
       if (dataset == "Map") tabset = ""
       
-      if (tabset == "dashboard") {
+      if (tabset == "recommendation") {
         df <- helpText %>% 
-          filter(tabpanel == "dashboard")
+          filter(tabpanel == "recommendation")
         print(df)
         rintrojs::introjs(
           session,
@@ -46,6 +47,22 @@ headerWalkthrough_server <- function(input,
       } else if (tabset == "map") {
         df <- helpText %>% 
           filter(tabpanel == "map")
+        rintrojs::introjs(
+          session,
+          options = list(
+            "nextLabel" = "Suivant",
+            "prevLabel" = "Précédent",
+            "skipLabel" = "Passer",
+            "doneLabel" = "Ok",
+            steps = data.frame(
+              element = as.vector(df$container),
+              intro = as.vector(df$text)
+            )
+          )
+        )
+      }else if (tabset == "classification") {
+        df <- helpText %>% 
+          filter(tabpanel == "classification")
         rintrojs::introjs(
           session,
           options = list(
