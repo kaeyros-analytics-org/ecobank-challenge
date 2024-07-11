@@ -175,13 +175,14 @@ recommendation_ui <- function(id){
         ),
         div(class="row p-0 m-0",
             div(class="col-lg-6 pr-1 pl-0", id = "text_history",
-                h4("Discussion history for this ID::"),
+                h5("Discussion history for this ID:"),
                 textOutput(ns("history")),
             ),
             div(class="col-lg-6 pr-1 pl-0", id = "services_recommendation",
-                h3("Display Services")
+                h5("Recommended services:")
             )
         ),
+        br(),
         div(class="row p-0 m-0",
             div(class="col-lg-6 pr-1 pl-0", id = "barchart",
                 uiOutput(ns("bar1")),
@@ -202,7 +203,7 @@ recommendation_server <- function(input, output, session) {
     out <- accordionCard(accordionId = "accordionPlotBarplot",
                          headerId = 'plotchart4',
                          targetId = 'collapseCcplotchartBarplot',
-                         headerContent = paste0("barplot", sep = ""),
+                         headerContent = paste0("Top 5 recommended products", sep = ""),
                          bodyContent = plotlyOutput(session$ns("barplot")),
                          iconId = paste0("_plotchart"),
                          dataset = "dataset")
@@ -254,7 +255,7 @@ recommendation_server <- function(input, output, session) {
       top_5 <- head(recommendations_products, 5)
       
       fig <- plot_ly(top_5, x = ~top_5$Product , y = ~top_5$Score, type = 'bar', color = I("#23557f"))
-      fig <- fig %>% layout(title = "Top 5 des produits recommendés",
+      fig <- fig %>% layout(title = "Top 5 recommended products",
                             xaxis = list(title = ""),
                             yaxis = list(title = ""))
       

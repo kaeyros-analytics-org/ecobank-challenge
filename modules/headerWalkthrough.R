@@ -24,7 +24,7 @@ headerWalkthrough_server <- function(input,
       print(dataset)
       
       if (dataset == "Recommendation") tabset = "recommendation"
-      if (dataset == "Classification") tabset = "classification"
+      if (dataset == "Claims Analytics") tabset = "classification"
       if (dataset == "Map") tabset = ""
       
       if (tabset == "recommendation") {

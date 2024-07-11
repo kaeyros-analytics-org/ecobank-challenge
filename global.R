@@ -38,6 +38,7 @@ library(LDAvis)
 library(SnowballC)
 library(textstem)
 library(proxy)
+library(rsconnect)
 
 filterStates <- reactiveValues(
   # dataset
