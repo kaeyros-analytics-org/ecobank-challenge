@@ -1,0 +1,30 @@
+.cards_overview_list {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.overview_card {
+  border-radius: 12px;
+  padding: 0.5rem 1rem;
+  border: 1px solid rgb(213, 213, 213);
+  width: 100%;
+  display: flex;
+}
+
+.overview_card_header {
+    width: 100%;
+}
+
+.overview_card_content {
+  font-size: 65px;
+  font-weight: bold;
+  float: right;
+}
+  
+.overview_card_title {
+  color: #0C71A2;
+  font-weight: bold;
+  font-size: 20px;
+}

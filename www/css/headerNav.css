@@ -1,0 +1,77 @@
+.navDiv {
+  	display: flex;
+}
+
+.navSpan {
+	margin-top: 11px;
+	color: rgba(0,0,0,.5);
+	display: none;
+}
+
+.navbar {
+	height: 50px;
+	padding: 5px 5px;
+}
+
+button.navbar-toggler {
+	padding: 0.25rem 0.5rem;
+	float: right;
+}
+
+div#navbarNav.navbar-collapse.collapse.show {
+	background-color: #FEFEFE;
+}
+
+a.nav-link {
+	font-size: 1.2rem;
+	margin: 0 10px;
+}
+
+li.nav-item.active {
+	font-weight: bold;
+	border-bottom: 2px solid#3392c5;
+}
+
+.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
+	color:#3392c5;
+}
+
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+	color:#3392c5;
+	font-weight: bold;
+}
+
+#navbar-wrapper {
+	width: 100%;
+	position: absolute;
+	z-index: 2;
+	background-color: #FEFEFE;
+	height: 100px;
+	margin-bottom: 20px;
+	border-bottom: 1px solid rgba(169,169,169, 0.8);
+	/* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+}
+
+#wrapper.toggled #navbar-wrapper {
+	position: absolute;
+	margin-right: -250px;
+}
+
+
+#preview-container {
+	vertical-align: top;
+	width: 60%;
+	display: inline-block;
+	text-align: right;
+	padding-top: 5px;
+  }
+
+.navbar-brand {
+	background-color: transparent;
+}
+
+#walkthrough-helpAllgemein {
+	padding: 0px;
+	margin: 0 9px;
+	margin-top: 9px;
+}

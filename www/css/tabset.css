@@ -1,0 +1,120 @@
+/*Netzwerkanalyse legend position*/
+#legendWrapper {
+  display: inline-block;
+  position: absolute;
+  margin-top: 250px;
+  left: 0px;
+}
+
+/*button tabelle*/
+#mainContentRouter-eoEventTableAccordionACLED-eoEventTable-actionFilter {
+  margin-left: 0%;
+}
+
+/*button tabelle*/
+#mainContentRouter-eoActorTableAccordionACLED-eoActorTable-actionFilter {
+  margin-left: 0%;
+}
+  
+  @media (max-height: 680px) {
+    #sidebar-wrapper {
+      overflow: auto;
+    }
+  }
+    
+  @media (min-width: 577px) {
+    #wrapper {
+      padding-left: 250px;
+    }
+    
+    #wrapper.toggled {
+      padding-left: 0px;
+    }
+    
+    #wrapper.toggled #filterBox {
+      display: none;
+    }
+  
+    #sidebar-wrapper {
+      width: 250px;
+    }
+    
+    #wrapper.toggled #sidebar-wrapper {
+      width: 0px;
+      overflow: auto;
+    }
+    
+    #wrapper.toggled #navbar-wrapper {
+      position: absolute;
+      margin-right: -250px;
+  }
+    
+    #wrapper.toggled #content-wrapper {
+      position: absolute;
+      margin-right: -250px;
+    }
+  
+    #navbar-wrapper {
+      position: relative;
+    }
+  
+    #wrapper.toggled {
+      padding-left: 0px;
+    }
+  
+    #content-wrapper {
+      position: relative;
+      top: 0;
+    }
+  
+    #wrapper.toggled #navbar-wrapper,
+    #wrapper.toggled #content-wrapper {
+      position: relative;
+      margin-right: 60px;
+    }
+  }
+    
+  @media (max-width: 576px) {
+    
+    #wrapper {
+      padding-left: 0;
+    }
+  
+    #sidebar-wrapper {
+      width: 0;
+      overflow: auto;
+    }
+  
+    #wrapper.toggled #sidebar-wrapper {
+      width: 250px;
+    }
+    
+    #wrapper.toggled #navbar-wrapper {
+      position: absolute;
+      margin-right: -250px;
+    }
+  
+    #wrapper.toggled #content-wrapper {
+      position: absolute;
+      margin-right: -250px;
+    }
+  
+    #navbar-wrapper {
+      position: relative;
+    }
+  
+    #wrapper.toggled {
+      padding-left: 250px;
+    }
+  
+    #content-wrapper {
+      position: relative;
+      top: 0;
+    }
+  
+    #wrapper.toggled #navbar-wrapper,
+    #wrapper.toggled #content-wrapper {
+      position: relative;
+      margin-right: 250px;
+    }
+  }

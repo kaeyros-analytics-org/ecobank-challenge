@@ -1,0 +1,14 @@
+#dropdownMenuButton {
+  background-color: #3392c5;  
+  margin-bottom: 10px !important;
+}
+
+#hamburgerCloseToggle a {
+  color: #565b5f !important;
+}
+
+a:link {
+  color: #3392c5;
+  background-color: transparent;
+  text-decoration: none;
+}

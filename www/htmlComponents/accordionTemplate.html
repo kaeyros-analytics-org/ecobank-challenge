@@ -1,0 +1,26 @@
+<div aria-label="Accordion Karte" id={{ accordionId }} class="card">
+  <div class="card-header" id={{ headerId }}>
+    
+    {{ optionalTooltip }}
+    <a tabindex="0" data-toggle="collapse" data-target={{ targetIdConcat }}
+    aria-expanded="true" aria-controls="collapseOne" title="Karte auf-/zuklappen">
+    <i class="bi bi-chevron-compact-down"></i>
+    <i class="bi bi-chevron-compact-up"></i>
+      {{ headerContent }}
+    </a>
+    <div tabindex="0" aria-label="Karte maximieren und minimieren" id={{ fullScreenId }} class = "card-fullscreen" title="Karte maximieren/minimieren">
+      <i class="bi bi-arrows-angle-expand" id="fullscreen"></i>
+    </div>
+    {{ download_button }}
+    {{ snapshot_button }}
+  
+
+  <div tabindex="0" id={{ targetId }} class="collapse show" aria-labelledby={{ headerId }} data-parent={{ accordionIdConcat }}>
+    <div class="card-body">
+      {{ bodyContent }}
+    </div>
+  </div>
+  </div>
+</div>
+
+<script src="./js/accordion.js"></script>

@@ -1,0 +1,29 @@
+<ul id = {{ elementId }} class="vRadioUl">
+  <li onclick="hideDiv_q3()">
+    <div class="inlineText">{{ valueOne }}</div>
+  </li>
+  <li onclick="showDiv_q3()">
+    <div class="inlineText">{{ valueTwo }}</div>
+  </li>
+  <li onclick="showDiv_q3()">
+    <div class="inlineText">{{ valueThree }}</div>
+  </li>
+</ul>
+
+<script>
+  
+  function showDiv_q3() {
+    var x = document.getElementById("q3_additions");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } 
+  };
+  
+  function hideDiv_q3() {
+    var x = document.getElementById("q3_additions");
+    if (x.style.display === "block") {
+      x.style.display = "none";
+    }
+  };
+  
+</script>

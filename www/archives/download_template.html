@@ -1,0 +1,65 @@
+<div tabindex="0" 
+     aria-label="Datendownload Button"
+     id={{ popoverId2 }} 
+     class = "card-screenshot"        
+     title="Daten speichern <div id={{ downloadId }} style = 'display: inline' class = 'card-datadownload' style='text-align:center'><i class='bi bi-save' style='text-align:center; font-weight: bold; cursor:pointer;'></i></div>" 
+     data-toggle="popover2" 
+     style = "padding-right: 5px;">
+   <i class="bi bi-columns" id= "download" title="Daten speichern"></i>
+   <div class="content2" hidden>
+         <hr>
+         <div class="form-group form-inline">
+            <h6>Dateiformat:  &nbsp;  </h6>
+            <select aria-label="Auswahl Dateiformat" tabindex="0" id="list" class="list-popover">
+               <option aria-label="csv" tabindex="0" class="listitem-popover" value=".csv">.csv</option>
+               <option aria-label="xlsx" tabindex="0" class="listitem-popover" value=".xlsx">.xlsx</option>
+            </select>
+            <hr>
+         </div>
+   </div>
+</div>
+
+<script src="./js/tabledownload.js"></script>
+
+<style>
+/* BundesSans font */
+@font-face {
+  font-family: "BundesSansWeb-Regular";
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+  src: url("../fonts/BundesSansWeb-Regular.eot"), url("../fonts/BundesSansWeb-Regular.ttf") format("truetype"), url("../fonts/BundesSansWeb-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "BundesSansWeb-Bold";
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+  src: url("../fonts/BundesSansWeb-Bold.eot"), url("../fonts/BundesSansWeb-Bold.ttf") format("truetype"), url("../fonts/BundesSansWeb-Bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "BundesSansWeb-Italic";
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+  src: url("../fonts/BundesSansWeb-Italic.eot"), url("../fonts/BundesSansWeb-Italic.ttf") format("truetype"), url("../fonts/BundesSansWeb-Italic.woff") format("woff");
+}
+
+@font-face {
+  font-family: "BundesSansWeb-BoldItalic";
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+  src: url("../fonts/BundesSansWeb-BoldItalic.eot"), url("../fonts/BundesSansWeb-BoldItalic.ttf") format("truetype"), url("../fonts/BundesSansWeb-BoldItalic.woff") format("woff");
+}
+
+@font-face {
+  font-family: "BundesSerifWeb-Bold";
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+  src: url("../fonts/BundesSerifWeb-Bold.eot"), url("../fonts/BundesSerifWeb-Bold.ttf") format("truetype"), url("../fonts/BundesSerifWeb-Bold.woff") format("woff");
+}
+</style>

@@ -1,0 +1,24 @@
+<ul id = {{ elementId }} class="vRadioUl">
+  <li>
+    <div class="inlineText">{{ valueOne }}</div>
+  </li>
+  <li>
+    <div class="inlineText">{{ valueTwo }}</div>
+  </li>
+  <li>
+    <div class="inlineText">{{ valueThree }}</div>
+  </li>
+  <li>
+    <div class="inlineText">{{ valueFour }}</div>
+  </li>
+</ul>
+
+<script>
+  $('ul.vRadioUl > li').click(function() {
+    let idUl = $(this).parent().attr('id');
+    $('#' + idUl + '>li.vRadioActive').removeClass('vRadioActive');
+    $(this).addClass("vRadioActive");
+  });
+</script>
+
+

@@ -1,0 +1,50 @@
+headerFormRadioControl <- function(elementId = NULL,
+                                   elementId_9a = NULL,
+                                   elementId_9b = NULL,
+                                   elementId_9c = NULL,
+                                   valueOne = NULL,
+                                   valueTwo = NULL,
+                                   valueThree = NULL,
+                                   valueFour = NULL,
+                                   valueFive = NULL,
+                                   valueSix = NULL,
+                                   valueSeven = NULL,
+                                   valueEight = NULL,
+                                   valueNine = NULL,
+                                   valueTen = NULL,
+                                   valueEleven = NULL,
+                                   valueTwelve = NULL,
+                                   valueThirteen = NULL,
+                                   valueFourteen = NULL,
+                                   valueFifteen = NULL,
+                                   valueSixteen = NULL,
+                                   valueSeventeen = NULL
+) {
+  
+  out <- htmlTemplate("www/htmlComponents/formRadioControl.html",
+                      elementId = elementId,
+                      elementId_9a = elementId_9a,
+                      elementId_9b = elementId_9b,
+                      elementId_9c = elementId_9c,
+                      valueOne = valueOne,
+                      valueTwo = valueTwo,
+                      valueThree = valueThree,
+                      valueFour = valueFour,
+                      valueFive = valueFive,
+                      valueSix = valueSix,
+                      valueSeven = valueSeven,
+                      valueEight = valueEight,
+                      valueNine = valueNine,
+                      valueTen = valueTen,
+                      valueEleven = valueEleven,
+                      valueTwelve = valueTwelve,
+                      valueThirteen = valueThirteen,
+                      valueFourteen = valueFourteen,
+                      valueFifteen = valueFifteen,
+                      valueSixteen = valueSixteen,
+                      valueSeventeen = valueSeventeen
+  )
+  
+  return(out)
+  
+}

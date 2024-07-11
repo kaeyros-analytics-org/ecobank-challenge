@@ -1,0 +1,28 @@
+<div id={{ id }} class="container-fluid">	
+  <ul class="nav nav-tabs" id="navtabs">
+    <li class="active"><a aria-label="Länderübersicht" href={{ tabOneIdHash }} data-toggle="tab">{{ tabOneHeading }}</a></li>
+    <li><a aria-label="Ländervergleich" href={{ tabTwoIdHash }} data-toggle="tab">{{ tabTwoHeading }}</a></li>
+    <li><a aria-label="Provinzübersicht" href={{ tabThreeIdHash }} data-toggle="tab">{{ tabThreeHeading }}</a></li>
+    <li><a aria-label="Ereignisübersicht" href={{ tabFourIdHash }} data-toggle="tab">{{ tabFourHeading }}</a></li>
+  </ul>
+  
+  <div class="tab-content ">
+    <div class="tab-pane active" id={{ tabOneId }}>
+      {{ tabOneContent }}
+    </div>
+    <div class="tab-pane" id={{ tabTwoId }}>
+      {{ tabTwoContent }}
+    </div>
+    <div class="tab-pane" id={{ tabThreeId }}>
+      {{ tabThreeContent }}
+    </div>
+    <div class="tab-pane" id={{ tabFourId }}>
+      {{ tabFourContent }}
+    </div>
+  </div>
+  
+  {{ filterCard }}
+  
+</div>
+
+<script src="./js/tabs.js"></script>
