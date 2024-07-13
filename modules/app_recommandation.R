@@ -270,7 +270,7 @@ recommendation_server <- function(input, output, session, filterStates) {
                 highlight = TRUE,
                 defaultPageSize = 8,
                 bordered = TRUE,
-                minRows = 6,
+                #minRows = 6,
                 theme = reactableTheme(
                   borderColor = "#B5E4FB",
                   stripedColor = "#f6f8fa",
