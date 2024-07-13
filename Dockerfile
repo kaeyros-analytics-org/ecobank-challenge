@@ -1,5 +1,5 @@
 # Base R Shiny image
-FROM rocker/shiny
+FROM rocker/shiny:latest
 
 # Installation de l'openjdk
 RUN apt-get update && apt-get install -y openjdk-8-jdk
@@ -17,13 +17,13 @@ WORKDIR /app
 COPY . /app
 
 # Crée un script R pour installer les packages
-RUN echo "install.packages(c('rJava', 'shiny', 'shiny.fluent', 'reactable', 'sf', 'shinyWidgets', 'markdown', 'stringr', 'leaflet', 'plotly', 'DT', 'shinycssloaders', 'pool', 'readxl', 'shinyjs', 'openxlsx', 'glue', 'rintrojs', 'dplyr', 'echarts4r', 'lubridate', 'quanteda', 'topicmodels', 'stopwords', 'ldatuning', 'tm', 'text', 'lsa', 'tidytext', 'jsonlite', 'LDAvis', 'SnowballC', 'textstem', 'proxy', 'rsconnect', 'fastText', 'maps', 'maptools'))" > /app/install_packages.R
+RUN echo "install.packages(c('rJava', 'shiny', 'shiny.fluent', 'reactable', 'sf', 'shinyWidgets', 'markdown', 'stringr', 'leaflet', 'plotly', 'shinycssloaders', 'pool', 'readxl', 'shinyjs', 'openxlsx', 'glue', 'rintrojs', 'dplyr', 'echarts4r', 'lubridate', 'quanteda', 'topicmodels', 'stopwords', 'tm', 'text', 'lsa', 'tidytext', 'jsonlite', 'LDAvis', 'SnowballC', 'textstem', 'proxy', 'rsconnect', 'fastText', 'maps', 'maptools'))" > /app/install_packages.R
 
 # Exécute le script pour installer les packages
 RUN Rscript /app/install_packages.R
 
 # Vérifie l'installation des packages
-RUN R -e "suppressMessages(suppressWarnings(lapply(c('rJava', 'shiny', 'shiny.fluent', 'reactable', 'sf', 'shinyWidgets', 'markdown', 'stringr', 'leaflet', 'plotly', 'DT', 'shinycssloaders', 'pool', 'readxl', 'shinyjs', 'openxlsx', 'glue', 'rintrojs', 'dplyr', 'echarts4r', 'lubridate', 'quanteda', 'topicmodels', 'stopwords', 'ldatuning', 'tm', 'text', 'lsa', 'tidytext', 'jsonlite', 'LDAvis', 'SnowballC', 'textstem', 'proxy', 'rsconnect', 'fastText', 'maps', 'maptools'), function(pkg) { if (!requireNamespace(pkg, quietly = TRUE)) { stop(paste('Package not installed:', pkg)) }})))"
+RUN Rscript -e "if (!require('shiny')) stop('Le package shiny n\'est pas installé')"
 
 # Expose the application port
 EXPOSE 8180
