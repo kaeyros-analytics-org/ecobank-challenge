@@ -19,6 +19,9 @@ WORKDIR /app
 # Copy your files into the container
 COPY . /app
 
+# Remove renv.lock to avoid conflict
+RUN rm -f /app/renv.lock
+
 # Install libglpk40 and libsecret-1-0
 RUN apt-get update && apt-get install -y libglpk40 libsecret-1-0
 
