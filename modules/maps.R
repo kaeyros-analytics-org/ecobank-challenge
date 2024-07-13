@@ -1,4 +1,5 @@
-data_clients <- readRDS("data/data_clients_final.rds")
+# data_clients_final <- readRDS("data/data_clients_final.rds")
+ecobank_clients <- readRDS("data/ecobank_clients.rds")
 
 map_ui <- function(id){
  
@@ -14,7 +15,7 @@ map_ui <- function(id){
 
 map_server <- function(input, output, session, filterStates){
   
-  data_clients_filter <- reactive({ data_clients %>%
+  data_clients_filter <- reactive({ ecobank_clients %>%
       filter(Start_time_discusion >= ymd(filterStates$date_start) &
                Start_time_discusion <= ymd(filterStates$date_end)) %>% 
       filter(if (filterStates$countrySelected != "All") pays == filterStates$countrySelected else TRUE)
@@ -22,15 +23,14 @@ map_server <- function(input, output, session, filterStates){
   
   data_map <- reactive({
     data_clients_filter() %>% 
-      group_by(pays, longitude, latitude) %>%
+      group_by(pays, ville, longitude, latitude) %>%
       summarize(count = n(), .groups = 'drop') # Utilisation de .groups = 'drop' pour éviter les avertissements sur le regroupement
   })
   
   output$map_plot <- renderLeaflet({
     polygon_popup <- paste0("<strong>",data_map()$pays,"</strong>", "<br>",
-                            "<strong>Nombre de personnes : </strong>", prettyNum( data_map()$count, big.mark = ",")#,"<br>",
-                            #"<strong>Population: </strong>", prettyNum(data_map$population, big.mark = ",")
-    )%>% 
+                            "<strong>Town: </strong>", data_map()$ville,"<br>",
+                            "<strong>Number of reclamations : </strong>", prettyNum(data_map()$count, big.mark = ",")) %>% 
       lapply(htmltools::HTML)
     # generate the wordl map
     world <- maps::map("world", fill=TRUE, plot=FALSE)
@@ -44,7 +44,7 @@ map_server <- function(input, output, session, filterStates){
     
     # Filtrer les pays choisis
     target_map <- if (choosen_countries == "All") {
-      subset(world_map, country %in% c("Cameroon","Nigeria","Rwanda","Chad","Kenya","Mali","Niger","Ghana","Senegal"))
+      subset(world_map, country %in% unique(ecobank_clients$pays))
     } else {
       subset(world_map, country %in% choosen_countries)
     }

@@ -72,7 +72,7 @@ filterStatesRouter_server <- function(input, output, session, filterStates) {
       ################## Country selection filter
       output$country <- renderUI({
         selection <- filterStates$countrySelected
-        choices =  c("All", "Cameroon","Nigeria","Rwanda","Chad","Kenya","Mali","Niger","Ghana","Senegal")
+        choices =  c("All", "Cameroon","Chad", "Ghana", "Kenya", "Mali","Niger", "Nigeria", "Rwanda", "Senegal", "Togo")
         tagList(
           div(class="sidebar-header", tags$a("Select Country: ")),
           backendTooltip(span(`data-toggle`="tooltip",

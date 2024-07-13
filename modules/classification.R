@@ -1,5 +1,5 @@
 
-Ecobank_client <- readRDS("data/Ecobank_client.rds")
+ecobank_clients <- readRDS("data/ecobank_clients.rds")
 
 ############# CARD OVERVIEW
 catalog_overview_card <- function(title, text, content) {
@@ -28,7 +28,7 @@ classification_ui <- function(id){
       div( class = "cards_overview_list", id = "cardview",
            catalog_overview_card("Total Clients", "Value", textOutput(ns("clients"))),
            catalog_overview_card("Total Reclamations", "Value", textOutput(ns("reclamations"))),
-           catalog_overview_card("Total Contacts", "Value",  textOutput(ns("contacts")))
+           catalog_overview_card("Active Users", "Value",  textOutput(ns("contacts")))
       )
     ),
     br(), ######### Make Space
@@ -43,7 +43,7 @@ classification_ui <- function(id){
 ########### Server for CPIO
 classification_server <- function(input, output, session, filterStates){
   
-  Ecobank_client_filter <- reactive({ Ecobank_client %>%
+  Ecobank_client_filter <- reactive({ ecobank_clients %>%
       filter(Start_time_discusion >= ymd(filterStates$date_start) &
                Start_time_discusion <= ymd(filterStates$date_end)) %>% 
       filter(if (filterStates$countrySelected != "All") pays == filterStates$countrySelected else TRUE)

@@ -103,8 +103,8 @@ call_sentiments_server <- function(input, output, session, filterStates){
     df_emotions$label <- rownames(df_emotions)
     df_emotions$color <- colorRampPalette(c("#23557f", "gray20", "gray80"))(8)
     
-    pie_chart <- df_emotions |> 
-      e_charts(label) |> 
+    pie_chart <- df_emotions %>%  
+      e_charts(label) %>%  
       e_pie(
         emotions,
         radius = c("40%", "70%"),
