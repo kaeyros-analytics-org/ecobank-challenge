@@ -28,7 +28,6 @@ jobs:
 
       - name: Build the Docker image 
         run: |
-          cd back-end && \
           docker build -t ${{ env.IMAGE_NAME }} .
 
       - name: Push backend image to GitHub Container Registry
@@ -64,5 +63,6 @@ jobs:
             cd /home/ubuntu/ecobank
             echo "${{ secrets.TOKEN }}" | sudo docker login ghcr.io -u "${{ secrets.USERNAME }}" --password-stdin
             sudo docker pull ${{ env.IMAGE_NAME }}
-            sudo docker-compose rm -f sema_backend
+            sudo docker rm -f ecobank_container
+            sudo docker run --name ecobank_container ghcr.io/kaeyros-analytics/ecobank_challenge
             
