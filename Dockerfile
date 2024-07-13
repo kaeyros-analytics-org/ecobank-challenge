@@ -19,8 +19,8 @@ COPY . /app
 # Installation de renv
 RUN R -e "install.packages('renv')"
 
-# Restauration de l'environnement renv
-RUN R -e "renv::restore()"
+# Installation des packages R à partir du fichier renv.lock
+RUN R -e "renv::snapshot()"
 
 # Installation du package maptools depuis R-Forge
 RUN R -e "install.packages('maptools', repos='http://R-Forge.R-project.org')"
