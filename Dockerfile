@@ -16,17 +16,16 @@ WORKDIR /app
 # Copy your files into the container
 COPY . /app
 
-# Installation de renv
-RUN R -e "install.packages('renv')"
-
-# Installation des packages R à partir du fichier renv.lock
-RUN R -e "renv::snapshot()"
-
-# Installation du package maptools depuis R-Forge
-RUN R -e "install.packages('shiny')"
+# Installation des packages R nécessaires
+RUN R -e "install.packages(c('shiny', 'reactable', 'sf', 'shinyWidgets', 'markdown', 'stringr', 'leaflet', 'plotly', 'shinycssloaders', 'pool', 'readxl', 'shinyjs', 'openxlsx', 'glue', 'dplyr', 'echarts4r', 'lubridate', 'quanteda', 'topicmodels', 'stopwords', 'tm', 'text', 'lsa', 'tidytext', 'jsonlite', 'LDAvis', 'SnowballC', 'textstem', 'proxy', 'rsconnect', 'maps'), repos='https://cloud.r-project.org/')"
 
 # Installation du package maptools depuis R-Forge
 RUN R -e "install.packages('maptools', repos='http://R-Forge.R-project.org')"
+
+# Installation des packages R depuis GitHub
+RUN R -e "devtools::install_github('Appsilon/shiny.fluent')"
+RUN R -e "devtools::install_github('Appsilon/rintrojs')"
+RUN R -e "devtools::install_github('boudrias/fastText')"
 
 # Expose the application port
 EXPOSE 8180
