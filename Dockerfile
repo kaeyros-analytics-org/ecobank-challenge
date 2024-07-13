@@ -19,6 +19,9 @@ COPY . /app
 # Crée un script R pour installer les packages
 RUN echo "install.packages(c('rJava', 'shiny', 'shiny.fluent', 'reactable', 'sf', 'shinyWidgets', 'markdown', 'stringr', 'leaflet', 'plotly', 'shinycssloaders', 'pool', 'readxl', 'shinyjs', 'openxlsx', 'glue', 'rintrojs', 'dplyr', 'echarts4r', 'lubridate', 'quanteda', 'topicmodels', 'stopwords', 'tm', 'text', 'lsa', 'tidytext', 'jsonlite', 'LDAvis', 'SnowballC', 'textstem', 'proxy', 'rsconnect', 'fastText', 'maps', 'maptools'))" > /app/install_packages.R
 
+# Crée un script R pour installer le package maptools
+RUN echo "install.packages('maptools', repos='http://R-Forge.R-project.org')"
+
 # Exécute le script pour installer les packages
 RUN Rscript /app/install_packages.R
 
