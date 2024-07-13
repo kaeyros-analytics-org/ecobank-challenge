@@ -1,27 +1,24 @@
-# Base R Shiny image
-FROM rocker/shiny
+# Utilisation d'une image plus légère de base
+FROM rocker/r-ver:4.0.5
 
-# Installation de l'openjdk et des bibliothèques système
+# Installation de l'openjdk et des bibliothèques système en une seule commande
 RUN apt-get update && apt-get install -y \
     openjdk-8-jdk \
     libglpk40 \
     libsecret-1-0 \
     && rm -rf /var/lib/apt/lists/*
 
-# Make a directory in the container
+# Création d'un répertoire de travail
 WORKDIR /app
 
-# Copy your files into the container
+# Copie des fichiers dans le conteneur
 COPY . /app
 
-# Remove renv.lock to avoid conflict
+# Suppression de renv.lock pour éviter les conflits
 RUN rm -f /app/renv.lock
 
-# Installer les packages R depuis CRAN (en utilisant les versions binaires si disponibles)
-RUN R -e "install.packages(c('shiny', 'shiny.fluent', 'reactable', 'sf', 'shinyWidgets', 'markdown', 'stringr', 'leaflet', 'plotly', 'shinycssloaders', 'pool', 'readxl', 'shinyjs', 'openxlsx', 'glue', 'rintrojs', 'dplyr', 'echarts4r', 'lubridate', 'quanteda', 'topicmodels', 'stopwords', 'tm', 'text', 'lsa', 'tidytext', 'jsonlite', 'LDAvis', 'SnowballC', 'textstem', 'proxy', 'rsconnect', 'fastText', 'maps'), repos='https://cloud.r-project.org/')"
-
-# Installer maptools depuis le dépôt spécifié
-RUN R -e "install.packages('maptools', repos='https://cloud.r-project.org/')"
+# Installation des packages R en une seule étape
+RUN R -e "install.packages(c('shiny', 'shiny.fluent', 'reactable', 'sf', 'shinyWidgets', 'markdown', 'stringr', 'leaflet', 'plotly', 'shinycssloaders', 'pool', 'readxl', 'shinyjs', 'openxlsx', 'glue', 'rintrojs', 'dplyr', 'echarts4r', 'lubridate', 'quanteda', 'topicmodels', 'stopwords', 'tm', 'text', 'lsa', 'tidytext', 'jsonlite', 'LDAvis', 'SnowballC', 'textstem', 'proxy', 'rsconnect', 'fastText', 'maps', 'maptools'), repos='https://cloud.r-project.org/')"
 
 # Exposer le port de l'application
 EXPOSE 8180
