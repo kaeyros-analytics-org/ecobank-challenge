@@ -24,8 +24,8 @@ headerWalkthrough_server <- function(input,
       print(dataset)
       
       if (dataset == "Recommendation") tabset = "recommendation"
-      if (dataset == "Classification") tabset = "classification"
-      if (dataset == "Map") tabset = ""
+      if (dataset == "Claims Analytics") tabset = "classification"
+      if (dataset == "Map") tabset = "map"
       
       if (tabset == "recommendation") {
         df <- helpText %>% 

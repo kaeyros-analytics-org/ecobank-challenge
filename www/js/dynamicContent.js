@@ -48,8 +48,8 @@ $(document).ready(function(){
   
   $('li.nav-item').click(function(e) {
     let navItemText = $(this).children().html();
-    let possibilities = ["Home", "Map", "Recommendation", "Classification"];
-    let nav_for_filter = ["Map", "Recommendation", "Classification"];
+    let possibilities = ["Home", "Map", "Recommendation", "Claims Analytics"];
+    let nav_for_filter = ["Map", "Recommendation", "Claims Analytics"];
     let iconChoices = ['class="bi bi-clipboard"', 'class="bi bi-chat-left-text"', 'class="bi bi-info-circle"', 'class="bi bi-file-earmark-text"', 'class="bi bi-question-circle"'];
     let iconTranslator = ["A propos de l'application", 'Feedback / Disclaimer', 'Methodische Hinweise', "Datenquellen", 'Virtueller Rundgang'];
 

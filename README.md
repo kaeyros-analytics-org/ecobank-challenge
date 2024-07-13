@@ -1,1 +1,0 @@
-# ecobank-challenge

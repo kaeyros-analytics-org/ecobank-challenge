@@ -1,3 +1,6 @@
+
+Ecobank_client <- readRDS("data/Ecobank_client.rds")
+
 ############# CARD OVERVIEW
 catalog_overview_card <- function(title, text, content) {
   div(class = "overview_card",
@@ -18,18 +21,18 @@ classification_ui <- function(id){
     tags$style("
                .fieldGroup-82{border: none;}
                "),
-
+    
     ################### Header CArd
     div( class="container-fluid",
       h3("Analytics Overview"),
       div( class = "cards_overview_list", id = "cardview",
-           catalog_overview_card("Total clients", "Value", "35k"),
-           catalog_overview_card("Total Reclamation", "Value", "12k"),
-           catalog_overview_card("Total contacts", "Value", "58k")
+           catalog_overview_card("Total Clients", "Value", textOutput(ns("clients"))),
+           catalog_overview_card("Total Reclamations", "Value", textOutput(ns("reclamations"))),
+           catalog_overview_card("Total Contacts", "Value",  textOutput(ns("contacts")))
       )
     ),
     br(), ######### Make Space
-
+    
     ################ Dashboard Layout 1
     div(class="container-fluid",
         call_sentiments_ui(ns("sentiments"))
@@ -39,7 +42,25 @@ classification_ui <- function(id){
 
 ########### Server for CPIO
 classification_server <- function(input, output, session, filterStates){
-
+  
+  Ecobank_client_filter <- reactive({ Ecobank_client %>%
+      filter(Start_time_discusion >= ymd(filterStates$date_start) &
+               Start_time_discusion <= ymd(filterStates$date_end)) %>% 
+      filter(if (filterStates$countrySelected != "All") pays == filterStates$countrySelected else TRUE)
+  })
+  
+  output$clients <- renderText({
+    paste0(nrow(Ecobank_client_filter() %>% filter(key=="client")))
+  })
+  
+  output$reclamations <- renderText({
+    paste0(length(unique(Ecobank_client_filter()$id)))
+  })
+  
+  output$contacts <- renderText({
+    paste0(length(unique(Ecobank_client_filter()$Call_Number)))
+  })
+  
   # output$sentiment_analysis <- renderUI({
   #   out <- accordionCard(accordionId = "accordionPlotSentiments",
   #                        headerId = 'plotchart1',
@@ -49,7 +70,7 @@ classification_server <- function(input, output, session, filterStates){
   #                        iconId = paste0("_plotchart"),
   #                        dataset = "dataset")
   # })
-
+  
   ######################### Output Render
   callModule(call_sentiments_server, id = "sentiments", filterStates)
 }

@@ -53,14 +53,14 @@ filterStatesRouter_server <- function(input, output, session, filterStates) {
       ################## Date filter
       output$dateRange <- renderUI({
         tagList(
-          div(class="sidebar-header", tags$a("Choisir l'écart de date: ")),
+          div(class="sidebar-header", tags$a("Choose the date range: ")),
           backendTooltip(span(`data-toggle`="tooltip",
                               `data-placement`="right",
                               `data-html` = "true",
-                              title = "Choississez l'écart de de date. Il doit être d'une semaine max.<br/>
-                           <b>Comment ça fonctionne:</b>
-                           Crée une paire d'entrées de texte qui, lorsqu'elles sont cliquées,
-                          font apparaître des calendriers sur lesquels l'utilisateur peut cliquer pour sélectionner des dates.", 
+                              title = "Choose the date range.
+                           <b>How it works</b><br>
+                           Creates a pair of text entries which, when clicked,
+                          bring up calendars on which the user can click to select dates.", 
                               HTML('<i class="bi bi-question-circle"></i>'))),
           dateRangeInput("dateRangeInput", label = NULL,
                          start = as.Date(filterStates$date_start), end = as.Date(filterStates$date_end),
@@ -72,14 +72,14 @@ filterStatesRouter_server <- function(input, output, session, filterStates) {
       ################## Country selection filter
       output$country <- renderUI({
         selection <- filterStates$countrySelected
-        choices = c("Cameroun", "Congo", "Guinnée", "Tchad")
+        choices =  c("All", "Cameroon","Nigeria","Rwanda","Chad","Kenya","Mali","Niger","Ghana","Senegal")
         tagList(
-          div(class="sidebar-header", tags$a("Sélection du pays: ")),
+          div(class="sidebar-header", tags$a("Select Country: ")),
           backendTooltip(span(`data-toggle`="tooltip",
                               `data-placement`="right", 
                               `data-html` = "true",
-                              title = "Vous pouvez choisir le pays. 
-                            Cette sélection a un impact sur les données affichés", 
+                              title = "You can choose the country. 
+                            This selection has an impact on the data displayed.", 
                               HTML('<i class="bi bi-question-circle"></i>'))),
           selectInput("countryInput", label = NULL,
                       choices = choices, selected = selection)
@@ -124,7 +124,7 @@ filterStatesRouter_server <- function(input, output, session, filterStates) {
         DefaultButton.shinyInput("filter_data", class = "btn-filter",
                                  text = "Apply filter",
                                  iconProps = list(iconName = "Add"),
-                                 style = "background-color: #0093FF; color: #fff;"
+                                 style = "background-color: #23557f; color: #fff;"
         )
       })
       

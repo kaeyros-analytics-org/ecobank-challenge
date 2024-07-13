@@ -30,7 +30,7 @@ mainContentRouter_server <- function(input, output, session, filterStates) {
                      ui_recommendation
                    })
                    # generate recommendation content ####
-                 } else if(filterStates$dataNavi$dataset == "Classification") {
+                 } else if(filterStates$dataNavi$dataset == "Claims Analytics") {
                    output$mainContent <- renderUI({
                      ui_classification
                    })
@@ -56,7 +56,7 @@ mainContentRouter_server <- function(input, output, session, filterStates) {
   })
   
   callModule(map_server, id = "map", filterStates)
-  callModule(recommendation_server, id = "recommendation")
+  callModule(recommendation_server, id = "recommendation", filterStates)
   callModule(classification_server, id = "classification", filterStates)
 }
 

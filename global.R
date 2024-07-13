@@ -38,13 +38,17 @@ library(LDAvis)
 library(SnowballC)
 library(textstem)
 library(proxy)
+library(rsconnect)
+library(fastText)
+library(maps)
+library(maptools)
 
 filterStates <- reactiveValues(
   # dataset
   dataNavi = list(dataset = "Home"),
   allDataset = NULL,
   allSubItem = NULL,
-  countrySelected = "Cameroun",
+  countrySelected = "All",
   citySelected = "Yaoundé",
   statusSelected = "all",
   date_start = "2024-01-01",
@@ -62,9 +66,9 @@ eval(parse('./modules/snapshot.R', encoding="UTF-8"))
 
 ################ Load loginc modules
 eval(parse('./modules/maps.R', encoding="UTF-8"))
-eval(parse('./modules/classification.r', encoding="UTF-8"))
-eval(parse('./modules/app_recommandation.r', encoding="UTF-8"))
-eval(parse('./modules/call_sentiments.r', encoding="UTF-8"))
+eval(parse('./modules/classification.R', encoding="UTF-8"))
+eval(parse('./modules/app_recommandation.R', encoding="UTF-8"))
+eval(parse('./modules/call_sentiments.R', encoding="UTF-8"))
 
 # visualization modules ###
 eval(parse('./modules/mainContent.R', encoding="UTF-8"))
@@ -111,3 +115,6 @@ modalXLargeDialog <- function(..., title = NULL, footer = modalButton("Dismiss")
 
 #import data
 path <- paste0(getwd(),"/data")
+
+# package à retirer
+#recipes
