@@ -2,7 +2,7 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ "develop" ]
+    branches: [ "main" ]
 
 env:
   IMAGE_NAME: ghcr.io/kaeyros-analytics/ecobank_challenge:latest
@@ -64,5 +64,5 @@ jobs:
             echo "${{ secrets.TOKEN }}" | sudo docker login ghcr.io -u "${{ secrets.USERNAME }}" --password-stdin
             sudo docker pull ${{ env.IMAGE_NAME }}
             sudo docker rm -f ecobank_container
-            sudo docker run --name ecobank_container ghcr.io/kaeyros-analytics/ecobank_challenge
+            sudo docker run -p 8180:8180 --name ecobank_container ghcr.io/kaeyros-analytics/ecobank_challenge
             
