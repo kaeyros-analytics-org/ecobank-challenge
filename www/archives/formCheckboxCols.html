@@ -1,0 +1,27 @@
+<div class="container-fluid m-0 p-0" style="padding: 0;">
+  <div id= {{ questionId }} class="row m-0 p-0">
+    <div class="col-sm-6 m-0 p-0">
+      {{ checkboxColOne }}
+    </div>
+    <div class="col-sm-6 m-0 p-0">
+      {{ checkboxColTwo }}
+      {{ textboxOptionOne }}
+    </div>
+  </div>
+  {{ textboxOptionTwo }}
+</div>
+
+<script>
+
+  $("label.container-checkbox").click(function() {
+    var checkbox = $(this).find("input");
+
+    if ($(checkbox).prop("checked")) {
+      $(checkbox).prop("checked", false);
+    } else {
+      $(checkbox).prop("checked", true);
+    }
+  
+  });
+  
+</script>

@@ -1,0 +1,117 @@
+  <ul id = {{ elementId }} class="vRadioUl">
+    <li onclick="showDiv()">
+      <div class="inlineText">{{ valueOne }}</div>
+    </li>
+    <li onclick="hideDiv()">
+      <div class="inlineText">{{ valueTwo }}</div>
+    </li> 
+  </ul>
+
+ <div id="additional_questions" style="margin-top: 10px; display: none;">
+   <div>
+     <strong>
+        9a) ...die Performance
+     </strong>   
+   </div>
+    
+      <div style="margin: 10px 0;">
+        <ul id = {{ elementId_9a }} class="vFormUl">
+          <li class="veryPoor">
+            <div class="inlineText">{{ valueThree }}</div>
+          </li>
+          <li class="poor">
+            <div class="inlineText">{{ valueFour }}</div>
+          </li> 
+          <li class="neutral">
+            <div class="inlineText">{{ valueFive }}</div>
+          </li>
+          <li class="good">
+            <div class="inlineText">{{ valueSix }}</div>
+          </li>
+          <li class="veryGood">
+            <div class="inlineText">{{ valueSeven }}</div>
+          </li>
+        </ul>
+      </div>
+    
+      <div>
+        <strong>
+          9b) ...das Design
+        </strong>   
+      </div>
+    
+      <div style="margin: 10px 0;">
+        <ul id = {{ elementId_9b }} class="vFormUl">
+          <li class="veryPoor">
+            <div class="inlineText">{{ valueEight }}</div>
+          </li>
+          <li class="poor">
+            <div class="inlineText">{{ valueNine }}</div>
+          </li> 
+          <li class="neutral">
+            <div class="inlineText">{{ valueTen }}</div>
+          </li>
+          <li class="good">
+            <div class="inlineText">{{ valueEleven }}</div>
+          </li>
+          <li class="veryGood">
+            <div class="inlineText">{{ valueTwelve }}</div>
+          </li>
+        </ul>
+      </div>
+    
+      <div>
+        <strong>
+          9c) ...die Funktionalität
+        </strong>   
+      </div>
+    
+      <div style="margin: 10px 0;">
+        <ul id = {{ elementId_9c }} class="vFormUl">
+          <li class="veryPoor">
+            <div class="inlineText">{{ valueThirteen }}</div>
+          </li>
+          <li class="poor">
+            <div class="inlineText">{{ valueFourteen }}</div>
+          </li> 
+          <li class="neutral">
+            <div class="inlineText">{{ valueFifteen }}</div>
+          </li>
+          <li class="good">
+            <div class="inlineText">{{ valueSixteen }}</div>
+          </li>
+          <li class="veryGood">
+            <div class="inlineText">{{ valueSeventeen }}</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+<script>
+
+  $('ul.vRadioUl > li').click(function() {
+    let idUl = $(this).parent().attr('id');
+    $('#' + idUl + '>li.vRadioActive').removeClass('vRadioActive');
+    $(this).addClass("vRadioActive");
+  });
+
+  $('ul.vFormUl > li').click(function() {
+    let idUl = $(this).parent().attr('id');
+    $('#' + idUl + '>li.vFormActive').removeClass('vFormActive');
+    $(this).addClass("vFormActive");
+  });
+
+  function showDiv() {
+    var x = document.getElementById("additional_questions");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } 
+  };
+  
+  function hideDiv() {
+    var x = document.getElementById("additional_questions");
+    if (x.style.display === "block") {
+      x.style.display = "none";
+    } 
+  }; 
+</script>

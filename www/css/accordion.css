@@ -1,0 +1,101 @@
+
+/* Accordion Plugin */
+.card-header {
+    padding: 5px;
+    font-weight: bold;
+    border: none;
+    color:#23557f;
+  }
+  
+  .card-body {
+    padding: 5px;
+  }
+  
+  .accordionBody {
+    position: relative;
+  }
+  
+  .card-header a[aria-expanded=true] .bi-chevron-compact-down {
+    display: inline-block;
+    content: "";
+    display: none;
+  }
+  .card-header a[aria-expanded=false] .bi-chevron-compact-up {
+    display: inline-block;
+    content: "";
+    display: none;
+  }
+  
+  .card-header a {
+    text-decoration: none;
+    font-weight: bold;
+    color:#23557f !important;
+  }
+  
+  .card-header a:hover {
+    color: grey;
+    cursor: pointer;
+  }
+
+
+/* fullscreen toggle */
+.panel-fullscreen {
+    display: block;
+    z-index: 99 !important;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    overflow: auto;
+}
+
+.card-fullscreen {
+  float: right; 
+  display: inline-box;
+}
+
+.card-fullscreen:hover {
+  color: grey;
+  cursor: pointer;
+}
+
+.card-savescreen {
+  float: right; 
+  display: inline-box;
+}
+
+.card-savescreen:hover {
+  color: grey;
+  cursor: pointer;
+}
+
+.card-screenshot {
+  float: right; 
+  display: inline-box;
+}
+
+.card-screenshot:hover {
+  color: grey;
+  cursor: pointer;
+}
+
+.card-datadownload {
+  float: right; 
+  display: inline-box;
+}
+
+.card-datadownload:hover {
+  color: grey;
+  cursor: pointer;
+}
+
+
+.card {
+  margin: 0;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border: none;
+} 

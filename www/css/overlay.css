@@ -1,0 +1,61 @@
+
+/* tooltip */
+.tooltip-inner {
+  background-color: white;
+  color: black;
+  max-width: 250px;  
+  min-width: 200px;
+  border: 1px solid #dedede;
+  z-index: 1000 !important;
+  position: relative;
+}
+
+.tooltipIcon {
+  display: inline-block;
+  float: right;
+  margin-bottom: 5px;
+  margin-right: 20px;
+  color:#3392c5;
+}
+
+.tooltipIcon:hover {
+  color: grey;
+  cursor: pointer;
+}
+
+.tooltip.bs-tooltip-right .arrow:before {
+    border-right-color: #dedede !important;
+    z-index: 1000 !important;
+}
+
+.tooltip.bs-tooltip-left .arrow:before {
+    border-right-color: #dedede !important;
+    z-index: 1000 !important;
+}
+.tooltip.bs-tooltip-bottom .arrow:before {
+    border-right-color: #dedede !important;
+    z-index: 1000 !important;
+}
+.tooltip.bs-tooltip-top .arrow:before {
+    border-right-color: #dedede !important;
+    z-index: 1000 !important;
+}
+
+.popover {
+  min-width: 225px;
+  width: 7%;
+  z-index: 200;
+}
+
+.popover-slider-output {
+  width: 25px;
+}
+
+#outputscale {
+  color: #565b5f;
+  font-weight: bold;
+}
+
+.slidecontainer {
+    width: 90%;
+}

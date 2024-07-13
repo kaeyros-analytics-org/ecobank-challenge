@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecobank Challenge</title>
+    
+    <!-- CSS -->
+    <link rel="shortcut icon" type="image/x-icon" href="./images/favicon.ico">
+    <link rel="stylesheet" href="./bootstrap_4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/global.css">
+    <link rel="stylesheet" href="./css/accordion.css">
+    <link rel="stylesheet" href="./css/bootstrap-icons.css">
+    <link rel="stylesheet" href="./css/form.css">
+    <link rel="stylesheet" href="./css/headerNav.css">
+    <link rel="stylesheet" href="./css/input.css">
+    <link rel="stylesheet" href="./css/introtable.css">
+    <link rel="stylesheet" href="./css/maps.css">
+    <link rel="stylesheet" href="./css/overlay.css">
+    <link rel="stylesheet" href="./css/sidebar.css">
+    <link rel="stylesheet" href="./css/tabset.css">
+    <link rel="stylesheet" href="./css/card.css">
+    <link rel="stylesheet" href="./css/landingpage.css">
+    <link rel="stylesheet" href="./css/introtable.css">
+    
+    <!-- Java Script -->
+    <script src="./js/jquery_3_5_1.min.js"></script>
+    <script src="./js/popper.min.js"></script>
+    <script src="./bootstrap_4.5.2/js/bootstrap.min.js"></script>
+    <script src="./js/dynamicContent.js"></script>
+    <script src="./js/form.js"></script>
+    
+    {{ suppressDependencies("bootstrap", "jquery", "font-awesome") }}
+    {{ headContent() }}
+    
+</head>
+
+<body>
+    <div id="wrapper">
+    
+        <!-- Sidebar Area -->
+        <aside id="sidebar-wrapper">
+            <div id="logo-container" style="margin-top: 25px; margin-left: 10px;">
+                <div id="aa-container">
+                    <img alt="Logo Company" src="./images/logo_preview.png" height="75">
+                </div>
+            </div>
+            {{ sidebarNavigation }}
+        </aside>
+        
+        <!-- Navbar Area -->
+        <div id="navbar-wrapper">
+            <div id="previewlogo" style="position: absolute; top: 0; right: 0; margin-top: 10px; margin-right: 10px;">
+                <img alt="Logo Preview" src="./images/logo_preview.png" height="60">
+            </div>
+            <div style="width: 100%; height: 50px; position: relative;">
+                <div aria-label="Toggle Seitennavigation" id="sidebar-toggle" title="Seitennavigation auf-/zuklappen">
+                    <div id="hamburgerCloseToggle" class="center">
+                        <a href="#"><i class="bi bi-text-indent-left"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div style="width: 100%; height: 50px; position: relative;">
+                {{ headerNav }}
+            </div>
+        </div>
+        
+        <!-- Content Area -->
+        <div id="content-wrapper">
+            <div id="content-container">
+                {{ contentSection }}
+            </div>
+        </div>
+    
+</body>
+</html>

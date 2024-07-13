@@ -1,0 +1,12 @@
+name: ecobank-challenge
+title: ecobank-challenge
+username: winniemafouo
+account: winniemafouo
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 12314341
+bundleId: 8860527
+url: https://winniemafouo.shinyapps.io/ecobank-challenge/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE

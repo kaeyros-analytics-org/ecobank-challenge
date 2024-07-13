@@ -1,0 +1,39 @@
+.attributionbox {
+  font-size: 11px;
+  margin-left: 4px;
+}
+
+/* If not using map tiles, show a white background */
+.leaflet-container {
+  background-color: #d1e9ff !important;
+}
+
+/* Legend */
+.customLegend {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background-color: rgba(255, 255, 255, 0.6);
+  width: 150px;
+  max-height: 250px;
+  overflow-y: auto;
+  padding-bottom: 5px;
+  border-radius: 3%;
+}
+
+.customLegend_minimize {
+  line-height: 0.8;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.customLegend_header {
+  font-size: 1.2em;
+  font-weight: bold;
+  text-decoration: underline; 
+  margin-left: 5px;
+}
+
+.legendBody {
+  margin-left: 5px;
+}

@@ -1,0 +1,506 @@
+/* vue Modal */
+
+.modal-footer {
+  display: block;
+}
+
+.formHeader {
+  margin-bottom: 8px;
+}
+
+#vueModalBackgroundOverlay {
+position: fixed;
+top: 0;
+left: 0;
+height: 100vh;
+width: 100%;
+background-color: rgba(0, 0, 0, 0.5);
+z-index: 100 !important;
+}
+
+.vueModalCloseButton {
+  position: fixed;
+  top: 85px;
+  right: calc(10% + 20px); 
+  font-weight: bold; 
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 201;
+}
+
+#vueModalDialog {
+font-family: Avenir, Helvetica, Arial, sans-serif;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+text-align: left;
+color: #2c3e50;
+  position: fixed;
+font-size: 13px;
+font-weight: 400;
+line-height: 1.5;
+background-color: white;
+top: 20px;
+left: 10%;
+width: 80%;
+overflow: hidden;
+height: calc(100vh - 40px);
+z-index: 200;
+border-radius: 5px;
+border: none;
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+padding: 0;
+margin: 0;
+}
+
+body#vueModalDialog {
+height: 100vh;
+overflow-y: hidden;
+}
+
+#vueModalHeader {
+background-color: #FEFEFE;
+  color: black;
+border-bottom: 1px solid darkgrey;
+}
+
+.vueModalHeaderContent {
+  font-weight: bold; 
+  font-size: 1.5rem;
+  padding-left: 20px;
+}
+
+#vueModalBody {
+position: relative;
+padding: 5px 10px;
+height: calc(100vh - 90px);
+overflow: auto;
+}
+
+#vueModalFlexContainer {
+display: flex; 
+height: 500px;
+justify-content: center; 
+align-items: center;
+}
+
+#vueModalLoginBox {
+width: 350px; 
+max-height: 300px; 
+overflow: auto; 
+border: 1px solid darkgrey; 
+border-radius: 5px;
+padding: 5px;
+}
+
+.vueLoginTextInput {
+  width: 100%;
+}
+.vueLoginTextInput:hover {
+  border: 2px solid black;
+  background-color: lightgrey;
+}
+
+#vueErrorBox {
+font-weight: bold;
+color: red;
+border: 1px solid black;
+padding: 5px;
+margin: 10px 0;
+font-size: 13px;
+line-height: 16px;
+}
+
+@media (max-width: 700px) {
+  #vueModalDialog {
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+}
+
+.vueModalCloseButton {
+  top: 50px;
+  right: 20px;
+}
+
+#vueModalBody {
+position: relative;
+padding: 5px 0;
+height: calc(100vh - 50px);
+overflow: auto;
+}
+
+#vueModalFlexContainer {
+height: calc(100vh - 50px - 10px);
+}
+}
+
+/* vueFormCustomQuestion */
+  
+.inlineText {
+   font-size: 13px;
+}
+
+.vFormActive {
+  border: 2px solid black !important;
+  font-weight: bold;
+}
+
+.veryPoor {
+  background-color: rgba(243, 80, 1, 0.5);
+  color: black;
+}
+.veryPoor:hover {
+  background-color: rgba(243, 80, 1, 1);
+  font-weight: bold;
+}
+.veryPoor.vFormActive {
+  background-color: rgba(243, 80, 1, 1);
+}
+
+.poor {
+  background-color: rgba(254, 175, 23, 0.5);
+  color: black;
+}
+.poor:hover {
+  background-color: rgba(254, 175, 23, 1);
+  font-weight: bold;
+}
+.poor.vFormActive {
+  background-color: rgba(254, 175, 23, 1);
+}
+
+.neutral {
+  background-color: rgba(254, 231, 26, 0.5);
+  color: black;
+}
+.neutral:hover {
+  background-color: rgba(254, 231, 26, 1);
+  font-weight: bold;
+}
+.neutral.vFormActive {
+  background-color: rgba(254, 231, 26, 1);
+}
+
+.good {
+  background-color: rgba(171, 203, 66, 0.5);
+  color: black;
+}
+.good:hover {
+  background-color: rgba(171, 203, 66, 1);
+  font-weight: bold;
+}
+.good.vFormActive {
+  background-color: rgba(171, 203, 66, 1);
+}
+
+.veryGood {
+  background-color: rgba(92, 121, 68, 0.5);
+  color: black;
+}
+.veryGood:hover {
+  background-color: rgba(92, 121, 68, 1);
+  font-weight: bold;
+  color: white;
+}
+.veryGood.vFormActive {
+  background-color: rgba(92, 121, 68, 1);
+  color: white;
+}
+
+.vFormUl {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+ul.vFormUl > li {
+  margin: 0;
+  width: 20%;
+  border: 1px solid #ccc;
+  padding: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer
+}
+
+/* vueForm general settings */
+  .vueFormControl {
+    display: block;
+    width: 100%;
+    margin: 5px 5px;
+    padding: 4px 8px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+      background-color: #fff;
+      background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 3px;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  }
+
+.buttonContainer {
+  text-align: left;  
+  display: flex;
+  margin-top: 15px;
+}  
+
+/* Submit Button */
+.form-submit {
+  margin-left: 5px;
+  border: none !important;  
+}
+
+.bi-save-fill {
+  font-style: normal;  
+}
+
+.vueFormButton {
+  background-color: ghostwhite;
+  padding: 3px;
+  color: black;
+}
+.vueFormButton:hover {
+  background-color: darkgrey;
+  padding: 3px;
+}
+
+.vueLoginButton {
+  background-color: white;
+  color: #3392c5;
+  padding: 6px;
+  margin-top: 0px !important;
+  margin-left: 10px;
+  border: none;
+  float: right !important;
+  position: absolute;
+  right: 0;
+  bottom: -55px;
+  margin-right: 10px; 
+}
+.vueLoginButton:hover {  
+  border: none;
+}
+
+.vueLoginButton:click {
+  display: none;
+}
+
+#vueFormLogout {
+  background-color: white;
+  color: #3392c5;
+  padding: 6px;
+  margin-top: 0px !important;
+  margin-left: 10px;
+  border: none;
+  float: right !important;
+  position: absolute;
+  right: 0;
+  bottom: -55px;
+  margin-right: 10px; 
+}
+#vueFormLogout:hover {  
+  border: none;
+}
+
+#vueFormLogout:click {
+  display: none;
+}
+
+.feedbackbutton {
+  border: none;
+}
+
+#vueForm {
+display: inline-block;
+margin: 0 9px;
+margin-top: 10px;
+}
+
+
+/* vueForm checkbox and radiobutton design */
+  /* The container */
+  .container-checkbox {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+/* Hide the browser's default checkbox */
+.container-checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.container-checkbox .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 24px;
+  width: 24px;
+  background-color: #eee;
+  border: 1px solid darkgrey;
+}
+
+/* On mouse-over, add a grey background color */
+.container-checkbox:hover input ~ .checkmark {
+  background-color: #ccc;
+  border: 1px solid black;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container-checkbox input:checked ~ .checkmark {
+  background-color: darkgrey;
+  border: 1px solid black;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.container-checkbox .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container-checkbox input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container-checkbox .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+/*Question 3 Checkbox*/
+
+/* vueForm checkbox and radiobutton design */
+  /* The container */
+  .container-checkbox_q3 {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+/* Hide the browser's default checkbox */
+.container-checkbox_q3 input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.container-checkbox_q3 .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 24px;
+  width: 24px;
+  background-color: #eee;
+  border: 1px solid darkgrey;
+}
+
+/* On mouse-over, add a grey background color */
+.container-checkbox_q3:hover input ~ .checkmark {
+  background-color: #ccc;
+  border: 1px solid black;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container-checkbox_q3 input:checked ~ .checkmark {
+  background-color: darkgrey;
+  border: 1px solid black;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.container-checkbox_q3 .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container-checkbox_q3 input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container-checkbox_q3 .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+#q3_additions {
+  margin-top: 10px !important;
+}
+
+/* radiobutton section */
+ul.vRadioUl {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+ul.vRadioUl > li {
+  width: 25%;
+  margin: 0;
+  border: 1px solid #ccc;
+  padding: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer
+}
+
+ul.vRadioUl > li:hover {
+  border-bottom: 2px solid red !important;
+  border: 1px solid black;
+  font-weight: bold;
+}
+
+ul.vRadioUl > li.vRadioActive {
+  border-bottom: 3px solid red !important;
+  font-weight: bold;
+}
+
+@media (min-width: 768px) {
+  .modal-xl {
+    width: 90% !important;
+   max-width:1200px  !important;
+  }
+}
