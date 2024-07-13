@@ -8,7 +8,7 @@
       },
       {
         "Name": "custom",
-        "URL": "http:/R-Forge.R-project.org"
+        "URL": "https://packagemanager.posit.co/cran/2023-10-13"
       }
     ]
   },
@@ -1513,9 +1513,9 @@
     },
     "maptools": {
       "Package": "maptools",
-      "Version": "1.1-9",
+      "Version": "1.1-8",
       "Source": "Repository",
-      "Repository": "R-Forge",
+      "Repository": "RSPM",
       "Requirements": [
         "R",
         "foreign",
@@ -1527,7 +1527,7 @@
         "stats",
         "utils"
       ],
-      "Hash": "ddfc5fb36718d8f497c529cb1c2e2285"
+      "Hash": "2457cdde319dfcd4d78ff10b9238c08e"
     },
     "markdown": {
       "Package": "markdown",
