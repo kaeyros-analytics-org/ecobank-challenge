@@ -1,4 +1,3 @@
-# Base R Shiny image
 FROM rocker/shiny:latest
 
 # Installation de l'openjdk
@@ -17,13 +16,13 @@ WORKDIR /app
 COPY . /app
 
 # Crée un script R pour installer les packages
-RUN echo "install.packages(c('rJava', 'shiny', 'shiny.fluent', 'reactable', 'sf', 'shinyWidgets', 'markdown', 'stringr', 'leaflet', 'plotly', 'shinycssloaders', 'pool', 'readxl', 'shinyjs', 'openxlsx', 'glue', 'rintrojs', 'dplyr', 'echarts4r', 'lubridate', 'quanteda', 'topicmodels', 'stopwords', 'tm', 'text', 'lsa', 'tidytext', 'jsonlite', 'LDAvis', 'SnowballC', 'textstem', 'proxy', 'rsconnect', 'fastText', 'maps', 'maptools'))" > /app/install_packages.R
-
-# Crée un script R pour installer le package maptools
-RUN echo "install.packages('maptools', repos='http://R-Forge.R-project.org')"
+RUN echo "install.packages(c('rJava', 'shiny', 'shiny.fluent', 'reactable', 'sf', 'shinyWidgets', 'markdown', 'stringr', 'leaflet', 'plotly', 'shinycssloaders', 'pool', 'readxl', 'shinyjs', 'openxlsx', 'glue', 'rintrojs', 'dplyr', 'echarts4r', 'lubridate', 'quanteda', 'topicmodels', 'stopwords', 'tm', 'text', 'lsa', 'tidytext', 'jsonlite', 'LDAvis', 'SnowballC', 'textstem', 'proxy', 'rsconnect', 'fastText', 'maps'))" > /app/install_packages.R
 
 # Exécute le script pour installer les packages
 RUN Rscript /app/install_packages.R
+
+# Installer 'maptools' depuis R-Forge
+RUN Rscript -e "install.packages('maptools', repos='http://R-Forge.R-project.org')"
 
 # Vérifie l'installation des packages
 RUN Rscript -e "if (!require('shiny')) stop('Le package shiny n\'est pas installé')"
