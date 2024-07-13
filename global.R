@@ -38,7 +38,6 @@ library(proxy)
 library(rsconnect)
 library(fastText)
 library(maps)
-library(maptools)
 
 filterStates <- reactiveValues(
   # dataset

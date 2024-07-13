@@ -866,19 +866,6 @@
       ],
       "Hash": "618609b42c9406731ead03adf5379850"
     },
-    "foreign": {
-      "Package": "foreign",
-      "Version": "0.8-85",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R",
-        "methods",
-        "stats",
-        "utils"
-      ],
-      "Hash": "26a24dde1722321b78f10d3bf42538d6"
-    },
     "fs": {
       "Package": "fs",
       "Version": "1.6.4",
@@ -1510,24 +1497,6 @@
         "utils"
       ],
       "Hash": "5f7886e53a3b39d4a110c7bd7fce9164"
-    },
-    "maptools": {
-      "Package": "maptools",
-      "Version": "1.1-9",
-      "Source": "Repository",
-      "Repository": "R-Forge",
-      "Requirements": [
-        "R",
-        "foreign",
-        "grDevices",
-        "grid",
-        "lattice",
-        "methods",
-        "sp",
-        "stats",
-        "utils"
-      ],
-      "Hash": "ddfc5fb36718d8f497c529cb1c2e2285"
     },
     "markdown": {
       "Package": "markdown",
