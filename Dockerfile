@@ -22,6 +22,9 @@ RUN echo "install.packages(c('rJava', 'shiny', 'shiny.fluent', 'reactable', 'sf'
 # Exécute le script pour installer les packages
 RUN Rscript /app/install_packages.R
 
+# Vérifie l'installation des packages
+RUN R -e "suppressMessages(suppressWarnings(lapply(c('rJava', 'shiny', 'shiny.fluent', 'reactable', 'sf', 'shinyWidgets', 'markdown', 'stringr', 'leaflet', 'plotly', 'DT', 'shinycssloaders', 'pool', 'readxl', 'shinyjs', 'openxlsx', 'glue', 'rintrojs', 'dplyr', 'echarts4r', 'lubridate', 'quanteda', 'topicmodels', 'stopwords', 'ldatuning', 'tm', 'text', 'lsa', 'tidytext', 'jsonlite', 'LDAvis', 'SnowballC', 'textstem', 'proxy', 'rsconnect', 'fastText', 'maps', 'maptools'), function(pkg) { if (!requireNamespace(pkg, quietly = TRUE)) { stop(paste('Package not installed:', pkg)) }})))"
+
 # Expose the application port
 EXPOSE 8180
 
