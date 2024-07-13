@@ -1,0 +1,68 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ "develop" ]
+
+env:
+  IMAGE_NAME: ghcr.io/kaeyros-analytics/ecobank_challenge:latest
+  CONTAINER_NAME: image_container
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  ci:
+    name: Continuous Integration
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Login to GitHub Container Registry
+        run: |
+          echo "${{ secrets.TOKEN }}" | docker login ghcr.io -u "${{ secrets.USERNAME }}" --password-stdin
+
+
+      - name: Build the Docker image 
+        run: |
+          cd back-end && \
+          docker build -t ${{ env.IMAGE_NAME }} .
+
+      - name: Push backend image to GitHub Container Registry
+        run: |
+          docker push ${{ env.IMAGE_NAME }}
+
+  cd:
+    name: Continuous Deployment
+    runs-on: ubuntu-latest
+    needs: ci
+    environment: production
+
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v4
+
+      - name: Deploy to my EC2 instance
+        uses: easingthemes/ssh-deploy@v2.1.5
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SOURCE: "./"
+          REMOTE_HOST: ${{ secrets.HOST_DNS }}
+          REMOTE_USER: ${{ secrets.USERNAME_SERVER }}
+          TARGET: ${{ secrets.TARGET_DIR }}
+
+      - name: Executing remote ssh commands using ssh key
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST_DNS }}
+          username: ${{ secrets.USERNAME_SERVER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /home/ubuntu/ecobank
+            echo "${{ secrets.TOKEN }}" | sudo docker login ghcr.io -u "${{ secrets.USERNAME }}" --password-stdin
+            sudo docker pull ${{ env.IMAGE_NAME }}
+            sudo docker-compose rm -f sema_backend
+            
