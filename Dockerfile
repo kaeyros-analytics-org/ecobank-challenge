@@ -23,6 +23,9 @@ RUN R -e "install.packages('renv')"
 RUN R -e "renv::snapshot()"
 
 # Installation du package maptools depuis R-Forge
+RUN R -e "install.packages('shiny')"
+
+# Installation du package maptools depuis R-Forge
 RUN R -e "install.packages('maptools', repos='http://R-Forge.R-project.org')"
 
 # Expose the application port
