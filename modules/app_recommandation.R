@@ -153,7 +153,7 @@ recommender_reclamation <- function(langue, discussion, topic_model_reclamation_
   new_1 <- posterior(topic_model, newdata = dfm_new)
   dominant_topic <- which.max(new_1$topics)
   # Filtrer le topic_service en fonction de la valeur de dominant_topic
-  filtered_topic_service <- topic_service %>% filter(Number == dominant_topic) %>%  select(Topic, Service)
+  filtered_topic_service <- topic_service %>% filter(Number == dominant_topic) %>%  select(Topic, Service, `Head Of Department`, `Call Number`)
   
   return(filtered_topic_service)
 } ###############  END FUNCTION RECLAMATION
@@ -261,11 +261,11 @@ recommendation_server <- function(input, output, session, filterStates) {
     selected_id  <- input$id
 
     # Filtrer l'historique des échanges pour le numéro d'appel sélectionné
-    history <- data_clients %>% filter(id == selected_id & key=="client") %>% select(date,reclamations )
+    history <- data_clients %>% filter(id == selected_id & key=="client") %>% select(Date,Claims) 
 
     ############# Historique de discution
     output$history <- renderReactable({
-      reactable( history,
+      reactable( history ,
                 striped = TRUE,
                 highlight = TRUE,
                 defaultPageSize = 8,
@@ -284,7 +284,7 @@ recommendation_server <- function(input, output, session, filterStates) {
     })
 
     # Filtrer l'historique des échanges pour le numéro d'appel sélectionné
-    discussion <- paste(data_clients %>% filter(id == selected_id & key=="client") %>% pull(reclamations ), collapse = " ")
+    discussion <- paste(data_clients %>% filter(id == selected_id & key=="client") %>% pull(Claims), collapse = " ")
   
     dtbl_out <- language_identification(discussion, file_pretrained)
     langue_count <- table(dtbl_out$iso_lang_1)
@@ -299,7 +299,6 @@ recommendation_server <- function(input, output, session, filterStates) {
                 highlight = TRUE,
                 defaultPageSize = 8,
                 bordered = TRUE,
-                minRows = 6,
                 theme = reactableTheme(
                   borderColor = "#B5E4FB",
                   stripedColor = "#f6f8fa",

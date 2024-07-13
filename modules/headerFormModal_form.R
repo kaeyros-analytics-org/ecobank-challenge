@@ -15,7 +15,9 @@ headerFormModal_form_server <- function(input,
                              session) {
   
   output$formModal_form <- renderUI({
-    "Lorem ipsum"
+    tagList(
+      includeMarkdown("./www/htmlComponents/about.html"),
+    )
   })
   
   output$downloadUserFormData <- downloadHandler(

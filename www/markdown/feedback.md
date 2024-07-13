@@ -1,4 +1,2 @@
-Ecobank Challenge
-<br><br>
-Lorem Ipsum
+Ecobank Claims Application
 
