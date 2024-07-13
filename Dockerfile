@@ -10,17 +10,20 @@ RUN apt-get update && apt-get install -y libglpk40 libsecret-1-0
 # Installation des dépendances système pour les packages R
 RUN apt-get update && apt-get install -y libudunits2-dev libproj-dev libgdal-dev libgeos-dev libgsl-dev
 
-# Installation des packages R spécifiés
-RUN R -e "install.packages(c('rJava', 'shiny', 'shiny.fluent', 'reactable', 'sf', 'shinyWidgets', 'markdown', 'stringr', 'leaflet', 'plotly', 'shinycssloaders', 'pool', 'readxl', 'shinyjs', 'openxlsx', 'glue', 'rintrojs', 'dplyr', 'echarts4r', 'lubridate', 'quanteda', 'topicmodels', 'stopwords', 'tm', 'text', 'lsa', 'tidytext', 'jsonlite', 'LDAvis', 'SnowballC', 'textstem', 'proxy', 'rsconnect', 'fastText', 'maps'))"
-
-# Installation du package maptools depuis R-Forge
-RUN R -e "install.packages('maptools', repos='http://R-Forge.R-project.org')"
-
 # Make a directory in the container
 WORKDIR /app
 
 # Copy your files into the container
 COPY . /app
+
+# Installation de renv
+RUN R -e "install.packages('renv')"
+
+# Restauration de l'environnement renv
+RUN R -e "renv::restore()"
+
+# Installation du package maptools depuis R-Forge
+RUN R -e "install.packages('maptools', repos='http://R-Forge.R-project.org')"
 
 # Expose the application port
 EXPOSE 8180
