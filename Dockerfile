@@ -1,29 +1,29 @@
-# Use the official R base image
-FROM r-base:latest
+# Base R Shiny image
+FROM rocker/shiny
 
-# Set the working directory in the container
+# Installation de l'openjdk
+RUN apt-get update && apt-get install -y openjdk-8-jdk
+
+# Installation de libglpk40 et libsecret-1-0
+RUN apt-get update && apt-get install -y libglpk40 libsecret-1-0
+
+# Installation des dépendances système pour les packages R
+RUN apt-get update && apt-get install -y libudunits2-dev libproj-dev libgdal-dev libgeos-dev libgsl-dev
+
+# Make a directory in the container
 WORKDIR /app
 
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
-    libcurl4-openssl-dev \
-    libssl-dev \
-    libxml2-dev \
-    libxt-dev \
-    libcairo2-dev \
-    libssh2-1-dev \
-    libsodium-dev \
-    libgit2-dev \
-    libgit2-ssh-1-dev
-
-# Install R packages
-RUN R -e "install.packages(c('shiny', 'shiny.fluent', 'reactable', 'sf', 'shinyWidgets', 'markdown', 'stringr', 'leaflet', 'plotly', 'shinycssloaders', 'pool', 'readxl', 'shinyjs', 'openxlsx', 'glue', 'rintrojs', 'dplyr', 'echarts4r', 'lubridate', 'quanteda', 'topicmodels', 'stopwords', 'tm', 'text', 'lsa', 'stringr', 'tidytext', 'jsonlite', 'LDAvis', 'SnowballC', 'textstem', 'proxy', 'rsconnect', 'fastText', 'maps', 'maptools'), repos='https://cloud.r-project.org/')"
-
-# Copy the Shiny app files to the container
+# Copy your files into the container
 COPY . /app
 
-# Set the port to expose
-EXPOSE 3838
+# Crée un script R pour installer les packages
+RUN echo "install.packages(c('rJava', 'shiny', 'shiny.fluent', 'reactable', 'sf', 'shinyWidgets', 'markdown', 'stringr', 'leaflet', 'plotly', 'DT', 'shinycssloaders', 'pool', 'readxl', 'shinyjs', 'openxlsx', 'glue', 'rintrojs', 'dplyr', 'echarts4r', 'lubridate', 'quanteda', 'topicmodels', 'stopwords', 'ldatuning', 'tm', 'text', 'lsa', 'tidytext', 'jsonlite', 'LDAvis', 'SnowballC', 'textstem', 'proxy', 'rsconnect', 'fastText', 'maps', 'maptools'))" > /app/install_packages.R
 
-# Run the Shiny app
-CMD ["R", "-e", "shiny::runApp(port=8180, launch.browser=FALSE)"]
+# Exécute le script pour installer les packages
+RUN Rscript /app/install_packages.R
+
+# Expose the application port
+EXPOSE 8180
+
+# Run the R Shiny app
+CMD ["R", "-e", "shiny::runApp('/app', host = '0.0.0.0', port = 8180)"]
