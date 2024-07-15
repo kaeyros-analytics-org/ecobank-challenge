@@ -64,7 +64,7 @@ filterStatesRouter_server <- function(input, output, session, filterStates) {
                               HTML('<i class="bi bi-question-circle"></i>'))),
           dateRangeInput("dateRangeInput", label = NULL,
                          start = as.Date(filterStates$date_start), end = as.Date(filterStates$date_end),
-                         min = "2024-01-01", max = Sys.Date()),
+                         min = "2024-01-01", max = "2024-07-14"),
           tags$script(src = "./js/tooltip.js")
         )
       })

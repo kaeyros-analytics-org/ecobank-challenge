@@ -41,7 +41,7 @@ server <- function(input, output, session) {
     filterStates$citySelected <- ""
     filterStates$statusSelected <- "All"
     filterStates$date_start <- "2024-01-01"
-    filterStates$date_end <- Sys.Date()
+    filterStates$date_end <- "2024-07-14"
     filterStates$filterButton <- FALSE
   })
 

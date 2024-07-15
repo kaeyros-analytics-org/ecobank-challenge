@@ -48,7 +48,7 @@ filterStates <- reactiveValues(
   citySelected = "Yaoundé",
   statusSelected = "all",
   date_start = "2024-01-01",
-  date_end = Sys.Date(),
+  date_end = "2024-07-14",
   filterButton = FALSE
 )
 
