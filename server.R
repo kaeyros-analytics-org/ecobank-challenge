@@ -37,7 +37,7 @@ server <- function(input, output, session) {
   ################ Reset filter on sidebar DATA
   observeEvent(input$reset_filter, {
     print("Reset the filter")
-    #filterStates$countrySelected <- NULL
+    filterStates$countrySelected <- "All"
     filterStates$citySelected <- ""
     filterStates$statusSelected <- "All"
     filterStates$date_start <- "2024-01-01"
