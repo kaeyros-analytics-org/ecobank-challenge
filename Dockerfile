@@ -1,34 +1,30 @@
-# Base R Shiny image
-FROM rocker/shiny:latest
+# Utilisation d'une image plus légère de base
+FROM rocker/r-ver:4.0.5
 
-# Installation de l'openjdk
-RUN apt-get update && apt-get install -y openjdk-8-jdk
+# Installation de l'openjdk et des bibliothèques système en une seule commande
+RUN apt-get update && apt-get install -y \
+    openjdk-8-jdk \
+    libglpk40 \
+    libsecret-1-0 \
+    && rm -rf /var/lib/apt/lists/*
 
-# Installation de libglpk40 et libsecret-1-0
-RUN apt-get update && apt-get install -y libglpk40 libsecret-1-0
-
-# Installation des dépendances système pour les packages R
-RUN apt-get update && apt-get install -y libudunits2-dev libproj-dev libgdal-dev libgeos-dev libgsl-dev
-
-# Make a directory in the container
+# Création d'un répertoire de travail
 WORKDIR /app
 
-# Copy your files into the container
+# Copie des fichiers dans le conteneur
 COPY . /app
 
-# Installation des packages R nécessaires
-RUN R -e "install.packages(c('shiny', 'reactable', 'sf', 'shinyWidgets', 'markdown', 'stringr', 'leaflet', 'plotly', 'shinycssloaders', 'pool', 'readxl', 'shinyjs', 'openxlsx', 'glue', 'dplyr', 'echarts4r', 'lubridate', 'quanteda', 'topicmodels', 'stopwords', 'tm', 'text', 'lsa', 'tidytext', 'jsonlite', 'LDAvis', 'SnowballC', 'textstem', 'proxy', 'rsconnect', 'maps'), repos='https://cloud.r-project.org/')"
+# Suppression de renv.lock pour éviter les conflits
+RUN rm -f /app/renv.lock
 
-# Installation du package maptools depuis R-Forge
-RUN R -e "install.packages('maptools', repos='http://R-Forge.R-project.org')"
+# Installation des packages R en une seule étape
+RUN R -e "install.packages(c('shiny', 'shiny.fluent', 'reactable', 'shinyWidgets', 'markdown', 'stringr', 'leaflet', 'plotly', 'shinycssloaders', 'pool', 'readxl', 'shinyjs', 'openxlsx', 'glue', 'rintrojs', 'dplyr', 'echarts4r', 'lubridate', 'quanteda', 'topicmodels', 'stopwords', 'tm', 'text', 'lsa', 'tidytext', 'jsonlite', 'LDAvis', 'SnowballC', 'textstem', 'proxy', 'rsconnect', 'fastText', 'maps'), repos='https://cloud.r-project.org/')"
 
-# Installation des packages R depuis GitHub
-RUN R -e "devtools::install_github('Appsilon/shiny.fluent')"
-RUN R -e "devtools::install_github('Appsilon/rintrojs')"
-RUN R -e "devtools::install_github('boudrias/fastText')"
+# Installation du package sf
+RUN R -e "install.packages('sf', repos='https://cloud.r-project.org/')"
 
-# Expose the application port
+# Exposer le port de l'application
 EXPOSE 8180
 
-# Run the R Shiny app
+# Exécuter l'application Shiny
 CMD ["R", "-e", "shiny::runApp('/app', host = '0.0.0.0', port = 8180)"]
