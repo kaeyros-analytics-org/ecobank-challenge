@@ -353,7 +353,7 @@ recommendation_server <- function(input, output, session, filterStates) {
       top_recommendations <- recommendations_products %>% head(5)
       top_recommendations %>%
         e_charts(Product) %>%
-        e_bar(Score, itemStyle = list(color = "#23557f")) %>%
+        e_bar(Score, itemStyle = list(color = "#23557f"), barWidth = '40%') %>%  # Ajuster la largeur des barres
         e_tooltip(trigger = 'axis') %>%
         e_x_axis(name = "Products") %>%
         e_y_axis(name = "Scores") %>%
