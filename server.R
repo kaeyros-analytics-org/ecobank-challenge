@@ -29,6 +29,7 @@ server <- function(input, output, session) {
   observeEvent(input$filter_data, {
     print("Apply the filter")
     filterStates$countrySelected <- input$countryInput
+    filterStates$citySelected <- input$cityInput
     filterStates$date_start <- input$dateRangeInput[1]
     filterStates$date_end <- input$dateRangeInput[2]
     filterStates$filterButton <- TRUE
@@ -38,10 +39,10 @@ server <- function(input, output, session) {
   observeEvent(input$reset_filter, {
     print("Reset the filter")
     filterStates$countrySelected <- "All"
-    filterStates$citySelected <- ""
+    filterStates$citySelected <- "All"
     filterStates$statusSelected <- "All"
     filterStates$date_start <- "2024-01-01"
-    filterStates$date_end <- "2024-07-14"
+    filterStates$date_end <- Sys.Date()
     filterStates$filterButton <- FALSE
   })
 

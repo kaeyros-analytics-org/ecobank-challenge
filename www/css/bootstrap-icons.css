@@ -1286,7 +1286,7 @@ url("../fonts/bootstrap-icons.woff?4601c71fb26c9277391ec80789bfde9c") format("wo
 
 /* Used bootstrap Icon color definition */
 .bi {
-  color:#3392c5;
+  color:#2E3A89;
 }
 
 .bi-clipboard {
@@ -1314,19 +1314,19 @@ url("../fonts/bootstrap-icons.woff?4601c71fb26c9277391ec80789bfde9c") format("wo
 }
 
 .bi-clipboard:hover {
-  color:#3392c5;
+  color:#2E3A89;
 }
 
 .bi-chat-left-text:hover {
-  color:#3392c5;
+  color:#2E3A89;
 }
 
 .bi-info-circle:hover {
-  color:#3392c5;
+  color:#2E3A89;
 }
 
 .bi-geo:hover {
-  color:#3392c5;
+  color:#2E3A89;
 }
 
 .bi-info-circle {
@@ -1347,5 +1347,5 @@ url("../fonts/bootstrap-icons.woff?4601c71fb26c9277391ec80789bfde9c") format("wo
 }
 
 .bi-file-earmark-text:hover {
-  color:#3392c5;
+  color:#2E3A89;
 }

@@ -4,7 +4,8 @@ filterStatesRouter_ui <- function(id) {
   fluentPage(
     shinyjs::useShinyjs(),
     div(id = "filterBox",
-        uiOutput(ns("country")),
+        #uiOutput(ns("country")),
+        uiOutput(ns("city")),
         uiOutput(ns("dateRange")),
         #uiOutput(ns("city")),
         #uiOutput(ns("status")),
@@ -64,7 +65,7 @@ filterStatesRouter_server <- function(input, output, session, filterStates) {
                               HTML('<i class="bi bi-question-circle"></i>'))),
           dateRangeInput("dateRangeInput", label = NULL,
                          start = as.Date(filterStates$date_start), end = as.Date(filterStates$date_end),
-                         min = "2024-01-01", max = "2024-07-14"),
+                         min = "2024-01-01", max = Sys.Date()),
           tags$script(src = "./js/tooltip.js")
         )
       })
@@ -89,7 +90,7 @@ filterStatesRouter_server <- function(input, output, session, filterStates) {
       ################## city selection filter
       output$city <- renderUI({
         selection <- filterStates$citySelected
-        choices = c("Yaounde", "Douala", "Bafoussam", "Bertoua", "etc...")
+        choices = c("All", "Bafoussam", "Bamenda", "Douala", "Garoua", "Kribi", "Ngaoundéré", "Yaoundé")
         tagList(
           div(class="sidebar-header", tags$a("Sélection de la ville: ")),
           backendTooltip(span(`data-toggle`="tooltip",

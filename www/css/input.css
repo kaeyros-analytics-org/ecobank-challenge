@@ -185,5 +185,5 @@ input[type='radio']:before {
 }
 
 input[type='radio']:checked:before {
-  background:#3392c5;
+  background:#2E3A89;
 }

@@ -16,9 +16,9 @@ global_situation_ui <- function(id){
               uiOutput(ns("text_global_situation_tab_1")),
             div(style="display: flex; justify-content: flex-end;",
               div(style = "margin-right: 10px;",
-                ActionButton.shinyInput("save", "Save", style = "background-color: #3392c5;
+                ActionButton.shinyInput("save", "Save", style = "background-color: #2E3A89;
                                         height:45px; color: #fff; font-weight: bold;width:50px")),
-              ActionButton.shinyInput("edit", "Edit", style = "background-color: #3392c5;
+              ActionButton.shinyInput("edit", "Edit", style = "background-color: #2E3A89;
                            height:45px; color: #fff; font-weight: bold;width:50px")
               )
             ),
@@ -73,7 +73,7 @@ global_situation_server <- function(input, output, session){
                   = list(background = "hsl(0, 0%, 96%)"),
                   borderColor = "grey"
                 ),
-                rowSelectedStyle = list(backgroundColor = "#3392c5",
+                rowSelectedStyle = list(backgroundColor = "#2E3A89",
                                         boxShadow = "inset 2px 0 0 0 #ffa62d")
                 
               )
@@ -114,7 +114,7 @@ global_situation_server <- function(input, output, session){
                   = list(background = "hsl(0, 0%, 96%)"),
                   borderColor = "grey"
                 ),
-                rowSelectedStyle = list(backgroundColor = "#3392c5",
+                rowSelectedStyle = list(backgroundColor = "#2E3A89",
                                         boxShadow = "inset 2px 0 0 0 #ffa62d")
                 
               )
@@ -148,7 +148,7 @@ global_situation_server <- function(input, output, session){
                   = list(background = "hsl(0, 0%, 96%)"),
                   borderColor = "grey"
                 ),
-                rowSelectedStyle = list(backgroundColor = "#3392c5",
+                rowSelectedStyle = list(backgroundColor = "#2E3A89",
                                         boxShadow = "inset 2px 0 0 0 #ffa62d")
                 
               )

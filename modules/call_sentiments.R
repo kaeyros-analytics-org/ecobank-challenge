@@ -52,7 +52,7 @@ call_sentiments_server <- function(input, output, session, filterStates){
   data_en_filter <- reactive({ sentiment_data %>%
       filter(Start_time_discusion >= ymd(filterStates$date_start) &
                Start_time_discusion <= ymd(filterStates$date_end)) %>% 
-      filter(if (filterStates$countrySelected != "All") pays == filterStates$countrySelected else TRUE)
+      filter(if (filterStates$citySelected != "All") city == filterStates$citySelected else TRUE)
   })
   
   # data_en_filter <- reactive({ sentiment_data })
@@ -68,7 +68,7 @@ call_sentiments_server <- function(input, output, session, filterStates){
     data <- data.frame(
       sentiment = c("Negative", "Positive", "Neutral"),
       count = c(total_negative, total_positive, total_neutral),
-      color = colorRampPalette(c("#23557f", "gray20", "gray80"))(3)
+      color = colorRampPalette(c("#E40915", "#7DB927", "#2E3A89"))(3)
     )
     
     # Création du diagramme en anneau
@@ -101,7 +101,7 @@ call_sentiments_server <- function(input, output, session, filterStates){
     
     df_emotions <- as.data.frame(emotions)
     df_emotions$label <- rownames(df_emotions)
-    df_emotions$color <- colorRampPalette(c("#23557f", "gray20", "gray80"))(8)
+    df_emotions$color <- colorRampPalette(c("#E40915", "#7DB927", "#2E3A89"))(8)
     
     pie_chart <- df_emotions %>%  
       e_charts(label) %>%  

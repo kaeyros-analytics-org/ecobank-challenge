@@ -60,7 +60,7 @@ recommender_product <- function(langue, discussion, topic_model_fr, topic_model_
   }
   
   # Créer le corpus et la matrice document-fréquence (dfm)
-  corp_new <- corpus(discussion, docnames = paste0("new_", seq_along(discussion)))
+  corp_new <- corpus(discussion)
   dfm_new <- dfm(corp_new)
 
 
@@ -74,7 +74,7 @@ recommender_product <- function(langue, discussion, topic_model_fr, topic_model_
 
 
 
-  dfm_topic <- dfm(grouped_train_data$discussion_text_client[topic_docs], docnames = paste0("doc_", seq_along(topic_docs)))
+  dfm_topic <- dfm(grouped_train_data$discussion_text_client[topic_docs])
 
   # Harmoniser les vocabulaires
   dfm_new <- dfm_match(dfm_new, features = featnames(dfm_topic))
@@ -123,7 +123,7 @@ recommender_product <- function(langue, discussion, topic_model_fr, topic_model_
   product_counts <- aggregate(similarity ~ products, data = weighted_products, sum)
 
   # Calculer les scores de recommandation pour chaque produit
-  product_counts$score <- round(product_counts$similarity / sum(product_counts$similarity) * 100, 2)
+  product_counts$score <- round(product_counts$similarity / sum(product_counts$similarity)*3 , 2)
 
   # Trier le dataframe en fonction des scores décroissants
   score_df <- product_counts[order(-product_counts$score), c("products", "score")]
@@ -139,7 +139,7 @@ recommender_reclamation <- function(langue, discussion, topic_model_reclamation_
   discussion <- sapply(discussion , preprocess_text)
   
   # Créer le corpus et la matrice document-fréquence (dfm)
-  corp_new <- corpus(discussion, docnames = paste0("new_", seq_along(discussion)))
+  corp_new <- corpus(discussion)
   dfm_new <- dfm(corp_new)
   
   
@@ -153,7 +153,7 @@ recommender_reclamation <- function(langue, discussion, topic_model_reclamation_
   new_1 <- posterior(topic_model, newdata = dfm_new)
   dominant_topic <- which.max(new_1$topics)
   # Filtrer le topic_service en fonction de la valeur de dominant_topic
-  filtered_topic_service <- topic_service %>% filter(Number == dominant_topic) %>%  select(Topic, Service, `Head Of Department`, `Call Number`)
+  filtered_topic_service <- topic_service_Activa %>% filter(Number == dominant_topic) %>%  select(Topic, Service, `Head Of Department`, `Call Number`)
   
   return(filtered_topic_service)
 } ###############  END FUNCTION RECLAMATION
@@ -176,6 +176,9 @@ data_clients <- readRDS(file.path(path_data, "data_clients.rds"))
 topic_model_reclamation_fr <- readRDS(file.path(path_data, "topic_model_reclamation_fr.rds"))
 topic_model_reclamation_en <- readRDS(file.path(path_data, "topic_model_reclamation_en.rds"))
 
+products_df <- readRDS(file.path(path_data, "products_df.rds"))
+topic_service_Activa <- readRDS(file.path(path_data, "topic_service_Activa.rds"))
+topic_service_Activa <- topic_service_Activa %>% rename(`Head Of Department` = Head.Of.Department, `Call Number` = Call.Number)
 
 # Interface utilisateur
 recommendation_ui <- function(id){
@@ -183,7 +186,7 @@ recommendation_ui <- function(id){
   fluentPage(
     div(class="container-fluid",
         div(class="row p-0 m-0", style = "gap: 10px;",
-            Text("Select a customer identifier: ", style = "color: #23557f; font-size: 20px;"),
+            Text("Select a customer identifier : ", style = "color: #2E3A89; font-size: 20px;"),
             uiOutput(ns("dropdown"))
         ),
         br(),
@@ -228,7 +231,7 @@ recommendation_server <- function(input, output, session, filterStates) {
   data_clients_filter <- reactive({ data_clients %>%
       filter(Start_time_discusion >= ymd(filterStates$date_start) &
                Start_time_discusion <= ymd(filterStates$date_end)) %>% 
-      filter(if (filterStates$countrySelected != "All") pays == filterStates$countrySelected else TRUE)
+      filter(if (filterStates$citySelected != "All") city == filterStates$citySelected else TRUE)
   })
   
   ############### Génération de la liste des numéro client
@@ -261,30 +264,54 @@ recommendation_server <- function(input, output, session, filterStates) {
     selected_id  <- input$id
 
     # Filtrer l'historique des échanges pour le numéro d'appel sélectionné
-    history <- data_clients %>% filter(id == selected_id & key=="client") %>% select(Date,Claims) 
+    history <- data_clients %>% filter(id == selected_id & key=="client") %>% select(Date, Claims, Claims_Assurance) %>% rename(`Claims Assurance` = Claims_Assurance)
 
     ############# Historique de discution
     output$history <- renderReactable({
-      reactable( history ,
-                striped = TRUE,
-                highlight = TRUE,
-                defaultPageSize = 8,
-                bordered = TRUE,
-                #minRows = 6,
-                theme = reactableTheme(
-                  borderColor = "#B5E4FB",
-                  stripedColor = "#f6f8fa",
-                  highlightColor = "#91A5FE",
-                  cellPadding = "8px 12px",
-                  style = list(fontFamily = "-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif",
-                               fontSize = "1.10rem"),
-                  searchInputStyle = list(width = "100%")
-                )
+      
+      reactable(
+        history[, c("Date", "Claims Assurance")],
+        striped = TRUE,
+        highlight = TRUE,
+        defaultPageSize = 3,
+        bordered = TRUE,
+        theme = reactableTheme(
+          borderColor = "#B5E4FB",
+          stripedColor = "#F5F9FF",
+          highlightColor = "#D9E4FF",
+          cellPadding = "10px 15px",
+          style = list(
+            fontFamily = "Segoe UI, Helvetica, Arial, sans-serif",
+            fontSize = "1rem",
+            backgroundColor = "#ffffff",
+            color = "#333333",
+            borderRadius = "8px",  # Coins arrondis pour plus de douceur
+            boxShadow = "0px 4px 12px rgba(0, 0, 0, 0.1)"  # Ombre pour un effet de profondeur
+          ),
+          headerStyle = list(
+            backgroundColor = "#91A5FE",
+            color = "#ffffff",
+            fontWeight = "bold",
+            textAlign = "left",  # Aligner les en-têtes à gauche
+            padding = "10px 15px"
+          ),
+          rowStyle = list(
+            textAlign = "left",  # Alignement du texte des lignes à gauche
+            borderRadius = "8px"  # Coins arrondis des cellules pour correspondre au tableau général
+          ),
+          searchInputStyle = list(
+            width = "100%",
+            padding = "8px",
+            borderRadius = "8px",
+            border = "1px solid #B5E4FB"
+          )
+        )
       )
+      
     })
 
     # Filtrer l'historique des échanges pour le numéro d'appel sélectionné
-    discussion <- paste(data_clients %>% filter(id == selected_id & key=="client") %>% pull(Claims), collapse = " ")
+    discussion <- paste(data_clients %>% filter(id == selected_id & key== "client") %>% pull(Claims), collapse = " ")
   
     dtbl_out <- language_identification(discussion, file_pretrained)
     langue_count <- table(dtbl_out$iso_lang_1)
@@ -292,22 +319,55 @@ recommendation_server <- function(input, output, session, filterStates) {
     
     ################ Génération des produits à recommender
     recommendations_products <- recommender_product(langue,  discussion, topic_model_fr, topic_model_en, grouped_train_ecobank_fr, grouped_train_ecobank_en)
+    recommendations_products_result <- inner_join(recommendations_products, products_df, by = c("Product" = "products_vector")) %>% 
+      rename(`Suggested Products`= produits_Activa)
     
     output$recommendations <- renderReactable({
-      reactable(recommendations_products,
-                striped = TRUE,
-                highlight = TRUE,
-                defaultPageSize = 8,
-                bordered = TRUE,
-                theme = reactableTheme(
-                  borderColor = "#B5E4FB",
-                  stripedColor = "#f6f8fa",
-                  highlightColor = "#91A5FE",
-                  cellPadding = "8px 12px",
-                  style = list(fontFamily = "-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif",
-                               fontSize = "1.10rem"),
-                  searchInputStyle = list(width = "100%")
-                )
+      reactable(
+        recommendations_products_result[, c("Suggested Products", "Score")],
+        striped = TRUE,
+        highlight = TRUE,
+        defaultPageSize = 8,
+        bordered = TRUE,
+        theme = reactableTheme(
+          borderColor = "#B5E4FB",
+          stripedColor = "#F5F9FF",
+          highlightColor = "#D9E4FF",
+          cellPadding = "10px 15px",
+          style = list(
+            fontFamily = "Segoe UI, Helvetica, Arial, sans-serif",
+            fontSize = "1rem",
+            backgroundColor = "#ffffff",
+            color = "#333333",
+            borderRadius = "8px",  # Coins arrondis pour plus de douceur
+            boxShadow = "0px 4px 12px rgba(0, 0, 0, 0.1)"  # Ombre pour un effet de profondeur
+          ),
+          headerStyle = list(
+            backgroundColor = "#91A5FE",
+            color = "#ffffff",
+            fontWeight = "bold",
+            textAlign = "left",  # Aligner les en-têtes à gauche
+            padding = "10px 15px"
+          ),
+          rowStyle = list(
+            textAlign = "left",  # Alignement du texte des lignes à gauche
+            borderRadius = "8px"  # Coins arrondis des cellules pour correspondre au tableau général
+          ),
+          searchInputStyle = list(
+            width = "100%",
+            padding = "8px",
+            borderRadius = "8px",
+            border = "1px solid #B5E4FB"
+          )
+        ),
+        # defaultColDef = colDef(
+        #   cell = data_bars(recommendations_products_result[, c("Suggested Products", "Score")],
+        #                    fill_color = viridis(5),
+        #                    background = "lightgrey",
+        #                    text_position = "inside-end",
+        #                    max_value = 1,
+        #                    number_fmt = scales::percent)
+        # )
       )
     })
     
@@ -324,12 +384,12 @@ recommendation_server <- function(input, output, session, filterStates) {
         columns = list(
           Topic = colDef(
             style = JS("function(rowInfo, colInfo, state) {
-        var firstSorted = state.sorted[0]
+        var firstSorted = state.sorted[0];
         // Fusionner les cellules si non triées ou triées par Topic
         if (!firstSorted || firstSorted.id === 'Topic') {
-          var prevRow = state.pageRows[rowInfo.viewIndex - 1]
+          var prevRow = state.pageRows[rowInfo.viewIndex - 1];
           if (prevRow && rowInfo.row['Topic'] === prevRow['Topic']) {
-            return { visibility: 'hidden' }
+            return { visibility: 'hidden' };
           }
         }
       }")
@@ -337,23 +397,44 @@ recommendation_server <- function(input, output, session, filterStates) {
         ),
         theme = reactableTheme(
           borderColor = "#B5E4FB",
-          stripedColor = "#f6f8fa",
-          highlightColor = "#91A5FE",
-          cellPadding = "8px 12px",
+          stripedColor = "#F5F9FF",
+          highlightColor = "#D9E4FF",
+          cellPadding = "10px 15px",
           style = list(
-            fontFamily = "-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif",
-            fontSize = "1.10rem"
+            fontFamily = "Segoe UI, Helvetica, Arial, sans-serif",
+            fontSize = "1rem",
+            backgroundColor = "#ffffff",
+            color = "#333333",
+            borderRadius = "8px",  # Coins arrondis pour plus de douceur
+            boxShadow = "0px 4px 12px rgba(0, 0, 0, 0.1)"  # Ombre pour un effet de profondeur
           ),
-          searchInputStyle = list(width = "100%")
+          headerStyle = list(
+            backgroundColor = "#91A5FE",
+            color = "#ffffff",
+            fontWeight = "bold",
+            textAlign = "left",  # Aligner les en-têtes à gauche
+            padding = "10px 15px"
+          ),
+          rowStyle = list(
+            textAlign = "left",  # Alignement du texte des lignes à gauche
+            borderRadius = "8px"  # Coins arrondis des cellules pour correspondre au tableau général
+          ),
+          searchInputStyle = list(
+            width = "100%",
+            padding = "8px",
+            borderRadius = "8px",
+            border = "1px solid #B5E4FB"
+          )
         )
       )
+      
     })
     
     output$barplot <- renderEcharts4r({
-      top_recommendations <- recommendations_products %>% head(5)
+      top_recommendations <- recommendations_products_result %>% head(5)
       top_recommendations %>%
-        e_charts(Product) %>%
-        e_bar(Score, itemStyle = list(color = "#23557f"), barWidth = '40%') %>%  # Ajuster la largeur des barres
+        e_charts(`Suggested Products`) %>%
+        e_bar(Score, itemStyle = list(color = "#2E3A89"), barWidth = '40%') %>%  # Ajuster la largeur des barres
         e_tooltip(trigger = 'axis') %>%
         e_x_axis(name = "Products") %>%
         e_y_axis(name = "Scores") %>%
@@ -365,16 +446,6 @@ recommendation_server <- function(input, output, session, filterStates) {
         )
     })
   })
-  
-  # output$test <- renderPlotly({
-  #   fig <- plot_ly(
-  #     x = c("giraffes", "orangutans", "monkeys"),
-  #     y = c(20, 14, 23),
-  #     name = "SF Zoo",
-  #     type = "bar"
-  #   )
-  #   
-  #   fig
-  # })
+ 
   
 }

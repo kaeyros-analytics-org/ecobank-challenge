@@ -1,2 +1,2 @@
-Ecobank Claims Application
+ACTIVA Insurance Claims Application
 

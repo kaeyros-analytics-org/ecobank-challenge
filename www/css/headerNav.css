@@ -29,15 +29,15 @@ a.nav-link {
 
 li.nav-item.active {
 	font-weight: bold;
-	border-bottom: 2px solid#3392c5;
+	border-bottom: 2px solid#2E3A89;
 }
 
 .navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
-	color:#3392c5;
+	color:#2E3A89;
 }
 
 .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
-	color:#3392c5;
+	color:#2E3A89;
 	font-weight: bold;
 }
 

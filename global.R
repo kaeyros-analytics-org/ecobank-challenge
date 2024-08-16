@@ -38,6 +38,11 @@ library(proxy)
 library(rsconnect)
 library(fastText)
 library(maps)
+library(tidyr)
+library(reactablefmtr)
+library(viridis)
+library(ggplot2)
+library(viridisLite)
 
 filterStates <- reactiveValues(
   # dataset
@@ -45,10 +50,10 @@ filterStates <- reactiveValues(
   allDataset = NULL,
   allSubItem = NULL,
   countrySelected = "All",
-  citySelected = "Yaoundé",
+  citySelected = "All",
   statusSelected = "all",
   date_start = "2024-01-01",
-  date_end = "2024-07-14",
+  date_end = Sys.Date(),
   filterButton = FALSE
 )
 

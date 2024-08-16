@@ -21,7 +21,7 @@
 
 .irs-slider {
   border: none !important;
-  background:#3392c5 !important;
+  background:#2E3A89 !important;
 }
 
 .irs-line {
@@ -48,7 +48,7 @@
 }
 
 .irs-single {
-  background:#3392c5 !important;
+  background:#2E3A89 !important;
 }
 
 #sidebar-wrapper {
@@ -100,7 +100,7 @@
 
 .sidebar-trendlinie {
   display: inline;
-  color:#3392c5;
+  color:#2E3A89;
 }
 
 .tooltipTrendlinie {
@@ -109,7 +109,7 @@
 }
 
 #sidebar-wrapper a {
-  color:#3392c5;
+  color:#2E3A89;
 }
 
 .bootstrap-select .dropdown-menu {

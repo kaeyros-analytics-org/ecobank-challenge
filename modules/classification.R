@@ -46,7 +46,7 @@ classification_server <- function(input, output, session, filterStates){
   Ecobank_client_filter <- reactive({ ecobank_clients %>%
       filter(Start_time_discusion >= ymd(filterStates$date_start) &
                Start_time_discusion <= ymd(filterStates$date_end)) %>% 
-      filter(if (filterStates$countrySelected != "All") pays == filterStates$countrySelected else TRUE)
+      filter(if (filterStates$citySelected != "All") city == filterStates$citySelected else TRUE)
   })
   
   output$clients <- renderText({

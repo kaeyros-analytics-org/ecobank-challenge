@@ -136,7 +136,7 @@ label {
 .control-label {
   font-weight: normal;
   margin-bottom: 15px;
-  color:#3392c5;
+  color:#2E3A89;
   margin-left: 20px;
 }
 
@@ -149,11 +149,11 @@ label {
 }
 
 #filter u {
-  color:#3392c5;
+  color:#2E3A89;
 }
 
 #filter a {
-  color:#3392c5;
+  color:#2E3A89;
 }
 
 /* marker cluster */
@@ -185,7 +185,7 @@ a > i {
 
 .btn-filter{
   background-color: rgb(232,245,251);
-  color:  #3392c5;
+  color:  #2E3A89;
   font-weight: bold;
   margin-left: 15%;
   margin-right: 15%
