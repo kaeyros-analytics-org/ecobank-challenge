@@ -25,6 +25,11 @@ mainContentRouter_server <- function(input, output, session, filterStates) {
                      )
                    })
                    # generate Réemploies content ####
+                 } else if(filterStates$dataNavi$dataset == "Customer Service") {
+                   output$mainContent <- renderUI({
+                     ui_customer_service
+                   })
+                   # generate recommendation content ####
                  } else if(filterStates$dataNavi$dataset == "Recommendation") {
                    output$mainContent <- renderUI({
                      ui_recommendation
@@ -49,6 +54,7 @@ mainContentRouter_server <- function(input, output, session, filterStates) {
   ############# This UI is for dashboard Layout Page
   ui_recommendation = recommendation_ui(session$ns("recommendation"))
   ui_classification = classification_ui(session$ns("classification"))
+  ui_customer_service = customer_interaction_ui(session$ns("customer_interaction"))
 
   observeEvent(input$ressources_tabs, {
     print("ok")
@@ -58,6 +64,8 @@ mainContentRouter_server <- function(input, output, session, filterStates) {
   callModule(map_server, id = "map", filterStates)
   callModule(recommendation_server, id = "recommendation", filterStates)
   callModule(classification_server, id = "classification", filterStates)
+  callModule(customer_interaction_server, id = "customer_interaction", filterStates)
+  
 }
 
 

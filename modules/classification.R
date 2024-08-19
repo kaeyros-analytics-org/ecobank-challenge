@@ -26,9 +26,9 @@ classification_ui <- function(id){
     div( class="container-fluid",
       h3("Analytics Overview"),
       div( class = "cards_overview_list", id = "cardview",
-           catalog_overview_card("Total Clients", "Value", textOutput(ns("clients"))),
-           catalog_overview_card("Total Claims", "Value", textOutput(ns("reclamations"))),
-           catalog_overview_card("Active Users", "Value",  textOutput(ns("contacts")))
+           catalog_overview_card("Total Clients", "", textOutput(ns("clients"))),
+           catalog_overview_card("Total Claims", "", textOutput(ns("reclamations"))),
+           catalog_overview_card("Active Users", "",  textOutput(ns("contacts")))
       )
     ),
     br(), ######### Make Space

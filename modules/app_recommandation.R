@@ -153,7 +153,7 @@ recommender_reclamation <- function(langue, discussion, topic_model_reclamation_
   new_1 <- posterior(topic_model, newdata = dfm_new)
   dominant_topic <- which.max(new_1$topics)
   # Filtrer le topic_service en fonction de la valeur de dominant_topic
-  filtered_topic_service <- topic_service_Activa %>% filter(Number == dominant_topic) %>%  select(Topic, Service, `Head Of Department`, `Call Number`)
+  filtered_topic_service <- topic_service_Activa %>% filter(Number == dominant_topic) %>%  select(Topic, Service, `Head Of Department`)
   
   return(filtered_topic_service)
 } ###############  END FUNCTION RECLAMATION
@@ -178,7 +178,6 @@ topic_model_reclamation_en <- readRDS(file.path(path_data, "topic_model_reclamat
 
 products_df <- readRDS(file.path(path_data, "products_df.rds"))
 topic_service_Activa <- readRDS(file.path(path_data, "topic_service_Activa.rds"))
-topic_service_Activa <- topic_service_Activa %>% rename(`Head Of Department` = Head.Of.Department, `Call Number` = Call.Number)
 
 # Interface utilisateur
 recommendation_ui <- function(id){

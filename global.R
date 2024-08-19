@@ -43,6 +43,8 @@ library(reactablefmtr)
 library(viridis)
 library(ggplot2)
 library(viridisLite)
+library(wordcloud2)
+
 
 filterStates <- reactiveValues(
   # dataset
@@ -70,6 +72,7 @@ eval(parse('./modules/maps.R', encoding="UTF-8"))
 eval(parse('./modules/classification.R', encoding="UTF-8"))
 eval(parse('./modules/app_recommandation.R', encoding="UTF-8"))
 eval(parse('./modules/call_sentiments.R', encoding="UTF-8"))
+eval(parse('./modules/customer_interaction.R', encoding="UTF-8"))
 
 # visualization modules ###
 eval(parse('./modules/mainContent.R', encoding="UTF-8"))

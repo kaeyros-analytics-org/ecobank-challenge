@@ -2388,6 +2388,20 @@
       ],
       "Hash": "c19df082ba346b0ffa6f833e92de34d1"
     },
+    "servr": {
+      "Package": "servr",
+      "Version": "0.30",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "httpuv",
+        "jsonlite",
+        "mime",
+        "xfun"
+      ],
+      "Hash": "562294886e51319dfad3f3e6e61fb0b8"
+    },
     "sf": {
       "Package": "sf",
       "Version": "1.0-16",
@@ -3234,6 +3248,20 @@
         "R"
       ],
       "Hash": "877644b9b942d429f3708e12c98d1a22"
+    },
+    "wordcloud2": {
+      "Package": "wordcloud2",
+      "Version": "0.2.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "base64enc",
+        "grDevices",
+        "graphics",
+        "htmlwidgets"
+      ],
+      "Hash": "10274bd096f5c2ad7471ea0eea0c1424"
     },
     "workflows": {
       "Package": "workflows",
